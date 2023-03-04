@@ -1,0 +1,38 @@
+package com.example.demo.services;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Credential;
+import com.example.demo.entities.User;
+import com.example.demo.repository.UserRepository;
+
+@Transactional
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepo;
+	
+	
+	public User findUserById(String user_id){
+		User user = userRepo.findByUserId(user_id);
+		return user;
+	}
+	
+	
+	//Validate user
+	public boolean findUserByEmailAndPassword(Credential cred) {
+		User user=userRepo.findByUserId(cred.getUser_id());
+		
+		if(user!=null && (cred.getPassword().equals(user.getPassword()))) {
+			return true;
+		}
+		return false;
+	}
+
+
+}
+
+

@@ -1,0 +1,22 @@
+package com.example.demo;
+
+public class search {
+	
+public static void main(String[] args) {
+	boolean flag=false;
+	int arr[]= {2,10,15,1,11};
+	int key=1;
+	for(int i=0;i<arr.length;i++) {
+		if(key==arr[i]) {
+			flag=true;
+		}
+		else {
+			flag=false;
+		}
+	}
+	if(flag)
+	System.out.println("found");
+	else
+		System.out.println("not found");
+}
+}
