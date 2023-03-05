@@ -25,7 +25,7 @@ public class SellerService {
         if (existingSeller.isPresent()) {
             throw new EmailAlreadyExistsException("Email is already in use");
         }
-        
+        seller.setRole(2);
         Login cred=new Login();
         cred.setEmail(seller.getEmail());
         cred.setPassword(seller.getPassword());

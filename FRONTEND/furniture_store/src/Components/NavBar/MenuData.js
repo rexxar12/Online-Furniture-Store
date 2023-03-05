@@ -16,9 +16,8 @@ export const MenuData=[
         cName: "nav-links",
     },
     {
-        title: "Registration 2",
-        url: "/reg",
-        cName: "nav-links",
+        title: "Login2",
+        url: "/login2"
     }
 
 

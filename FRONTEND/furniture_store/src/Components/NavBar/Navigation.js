@@ -51,7 +51,7 @@ function ColorSchemesExample() {
               animationRef.current.setDirection(-1);
               animationRef.current.play();
             }}>
-              <a href="/register">
+              <a href="/reg">
         <Lottie
               loop={false}
               autoPlay={false}

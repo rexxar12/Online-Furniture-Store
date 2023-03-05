@@ -7,7 +7,7 @@ ul{
     justify-content: space-between;
     align-items: center;
     font-size: 1.2rem;
-    padding: 0 30px;
+    padding: 0 10px;
     /* background-color: #ce97dd; */
     /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); */
     width: 95%;
@@ -53,6 +53,7 @@ ul{
 
 .logo{
     color: #fff;
+    padding-left: 20px;
 }
 .icon{
     margin-bottom: 37px;

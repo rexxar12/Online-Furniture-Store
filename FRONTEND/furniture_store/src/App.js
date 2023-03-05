@@ -9,10 +9,12 @@ import Customer from './Components/Customer';
 import Products from './Components/Products';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Reg from './Components/Reg/Reg'
+import Login from './Components/Dummy/dummy';
+import { Redirect } from 'react-router-dom';
+import {requireAuth} from './utils/Auth'
 
 
 function App() {
-
 
   return (
     <>
@@ -25,12 +27,15 @@ function App() {
             <Route path='/home' element={<Home/>}/>
             <Route path='/login' element={<LoginForm/>}/>
             <Route path='/register' element={<RegisterSeller/>}/>
-            <Route path='/admin' element={<Admin/>}/>
+            <Route path='/admin' element={<Admin/>} component={requireAuth(Admin)}/>
             <Route path='/seller' element={<Seller/>}/>
             <Route path='/carpenter' element={<Carpenter/>}/>
             <Route path='/customer' element={<Customer/>}/>
             <Route path='/products' element={<Products/>}/>
             <Route path='/reg' element={<Reg/>}/>
+            <Route path='/login2' element={<Login/>}/>
+            
+            
           </Routes>
           
     </>

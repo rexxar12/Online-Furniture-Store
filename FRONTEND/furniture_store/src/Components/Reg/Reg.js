@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Seller from '../Registration/Seller';
 import Customer from '../Registration/Customer';
 import Carpenter from '../Registration/Carpenter';
+import { Container } from 'react-bootstrap';
+import './Register.css'
 
 const Register = () => {
   const [formType, setFormType] = useState('');
@@ -11,7 +13,7 @@ const Register = () => {
   };
 
   return (
-    <div className="gradient-custom  ">
+    <div className='gradient-custom'>
       <div className="container vh-100 me-5 mb-auto">
         <div className="row justify-content-center align-items-center vh-100 ">
           <div className="col-12 col-lg-12 col-xl-7">

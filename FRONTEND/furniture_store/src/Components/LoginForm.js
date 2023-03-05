@@ -1,41 +1,63 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
+
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const initialState = {
+    email: "",
+    password: "",
+    error: "",
+  };
   
+  function reducer(state, action) {
+    switch (action.type) {
+      case "EMAIL_CHANGE":
+        return { ...state, email: action.payload };
+      case "PASSWORD_CHANGE":
+        return { ...state, password: action.payload };
+      case "LOGIN_SUCCESS":
+        return { ...state, error: "", email: "", password: "" };
+      case "LOGIN_ERROR":
+        return { ...state, error: action.payload };
+      default:
+        return state;
+    }
+  }
+  
+  const { email, password, error } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const [state, dispatchLocal] = useReducer(reducer, initialState);
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    dispatchLocal({ type: "EMAIL_CHANGE", payload: event.target.value });
   };
 
-  const url="http://localhost:8080/api/login";
-
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    dispatchLocal({ type: "PASSWORD_CHANGE", payload: event.target.value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(url, { email, password });
+      const response = await axios.post("http://localhost:8080/api/login", {
+        email: state.email,
+        password: state.password,
+      });
       const userRole = response.data;
+      dispatch({ type: "LOGIN_SUCCESS", payload: userRole });
       if (userRole === "admin") {
         window.location.replace("/admin");
-      }
-      else if(userRole ==="seller"){
+      } else if (userRole === "seller") {
         window.location.replace("/seller");
-      }
-      else if(userRole ==="carpenter"){
+      } else if (userRole === "carpenter") {
         window.location.replace("/carpenter");
-      }
-      else {
+      } else {
         window.location.replace("/customer");
       }
     } catch (error) {
-      setError(error.response.data);
+      dispatch({ type: "LOGIN_ERROR", payload: error.response.data });
     }
   };
 

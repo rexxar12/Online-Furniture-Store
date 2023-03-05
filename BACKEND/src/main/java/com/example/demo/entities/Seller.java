@@ -91,8 +91,8 @@ public class Seller {
 	public int getRole() {
 		return role;
 	}
-	public void setRole() {
-		this.role = 1;
+	public void setRole(int role) {
+		this.role = role;
 	}
 		
 }

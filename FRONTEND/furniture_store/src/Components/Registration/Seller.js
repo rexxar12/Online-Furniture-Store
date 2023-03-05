@@ -21,12 +21,14 @@ const Registration = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    sname: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required'),
-    contact: Yup.string().required('Phone number is required'),
+    sname: Yup.string().required('Name is required').matches(/[A-Z]/, 'Enter Atleast one Capital Letter'),
+    
+    email: Yup.string().email('Invalid email').required('Email is required').matches(/^[^\s@]+@[^\s@]+\.[a-zA-Z]{3}$/ , 'Enter email properly'
+    ),
+    password: Yup.string().required('Password is required').matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/, 'Password should atleast contain one capital letter,one special character and one digit. Length should be atleast 8 characters'),
+    contact: Yup.string().required('Phone number is required').matches(/^\d{10}$/, 'Phone number must be 10 digits'),
     address: Yup.string().required('Address is required'),
-    gstno: Yup.string().required('GST number is required'),
+    gstno: Yup.string().required('GST number is required').matches(/^\d{15}$/, 'GST number must be 15 digits'),
     area: Yup.string().required('area number is required'),
   });
 
