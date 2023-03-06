@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Seller from '../Registration/Seller';
 import Customer from '../Registration/Customer';
 import Carpenter from '../Registration/Carpenter';
-import { Container } from 'react-bootstrap';
 import './Register.css'
 
 const Register = () => {

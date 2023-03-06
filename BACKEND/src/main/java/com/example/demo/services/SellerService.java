@@ -1,6 +1,9 @@
 package com.example.demo.services;
 
+import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,4 +37,26 @@ public class SellerService {
         sellerRepository.save(seller);
         loginRepository.save(cred);
     }
+    
+    public List<Seller> getAllSellers() {
+        return sellerRepository.findAll();
+    }
+    
+    public List<Seller> getSellersByStatus(int status) {
+        return sellerRepository.findByStatus(status);
+    }
+    
+    public void approveSeller(int sid) {
+        Seller seller = sellerRepository.findById(sid).orElse(null);
+        if (seller != null) {
+            seller.setStatus(1);
+            sellerRepository.save(seller);
+        }
+    }
+    
+    public void rejectSeller(int sid) {
+        sellerRepository.deleteBySid(sid);
+    }
+    
+    
 }
