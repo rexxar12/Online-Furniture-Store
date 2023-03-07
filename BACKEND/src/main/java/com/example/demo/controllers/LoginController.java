@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.LoginResponse;
+import com.example.demo.repository.SellerRepository;
 import com.example.demo.services.LoginService;
 
 
@@ -22,33 +24,33 @@ import com.example.demo.services.LoginService;
 public class LoginController {
     @Autowired
     private LoginService userService;
+    @Autowired
+    private SellerRepository sellerRepository;
     
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> loginDetails) {
+    public ResponseEntity<LoginResponse> login(@RequestBody Map<String, String> loginDetails) {
         String email = loginDetails.get("email");
         String password = loginDetails.get("password");
+        int id;
 
         if (userService.authenticate(email, password)) {
             int userRole = userService.getUserRole(email, password);
             if (userRole == 1) {
-                return ResponseEntity.ok("admin");
-            } 
-            else if (userRole==2) {
-            	return ResponseEntity.ok("seller");
-            }
-            else if (userRole==3) {
-            	return ResponseEntity.ok("carpenter");
-            }
-            else  {
-                return ResponseEntity.ok("customer");
+                return ResponseEntity.ok(new LoginResponse(0, "admin"));
+            } else if (userRole == 2) {
+                id = sellerRepository.findSidByEmail(email);
+                return ResponseEntity.ok(new LoginResponse(id, "seller"));
+            } else if (userRole == 3) {
+                return ResponseEntity.ok(new LoginResponse(0, "carpenter"));
+            } else {
+                return ResponseEntity.ok(new LoginResponse(0, "customer"));
             }
         } else {
-            return ResponseEntity.badRequest().body("Invalid login details");
+            return ResponseEntity.badRequest().body(null);
         }
-    }
     
         
-    
+    }
 
 }
 

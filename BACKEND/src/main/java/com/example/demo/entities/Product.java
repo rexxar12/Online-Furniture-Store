@@ -22,12 +22,29 @@ public class Product {
     private String description;
     @Lob
     private byte[] productImage;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller_id")
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "sid")
     private Seller seller;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+    
+    
     // constructors, getters and setters
     
-    public Product() {
+    public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Product() {
+		
     }
     
 	public int getPid() {

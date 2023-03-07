@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,15 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.Product;
 import com.example.demo.entities.Seller;
 import com.example.demo.exceptions.EmailAlreadyExistsException;
+import com.example.demo.services.ProductService;
 import com.example.demo.services.SellerService;
 
 
@@ -25,6 +31,17 @@ import com.example.demo.services.SellerService;
 public class SellerController {
     @Autowired
     private SellerService sellerService;
+    
+    @Autowired
+    private  ProductService productService;
+
+ 
+
+    @PostMapping(value = "/products", consumes = { "multipart/form-data" })
+    public Product addProduct(@ModelAttribute Product product, @RequestParam("image") MultipartFile image, @RequestParam("sellerId") int sellerId) throws IOException {
+        Product newProduct = productService.addProduct(product, image, sellerId);
+        return newProduct;
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Seller seller) {

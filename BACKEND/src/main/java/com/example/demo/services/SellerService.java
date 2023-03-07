@@ -3,12 +3,11 @@ package com.example.demo.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityNotFoundException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.Credential;
 import com.example.demo.entities.Login;
 import com.example.demo.entities.Seller;
 import com.example.demo.exceptions.EmailAlreadyExistsException;

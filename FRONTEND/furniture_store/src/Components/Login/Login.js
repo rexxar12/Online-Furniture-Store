@@ -18,6 +18,7 @@ import { useEffect, useRef,useState } from "react";
 
 
 
+
 function App() {
   const animationRef = useRef(null);
 
@@ -41,6 +42,7 @@ const initialState = {
   email: "",
   password: "",
   error: "",
+  id: 0,
 };
 
 function reducer(state, action) {
@@ -53,6 +55,8 @@ function reducer(state, action) {
       return { ...state, error: "", email: "", password: "" };
     case "LOGIN_ERROR":
       return { ...state, error: action.payload };
+      case "STORE_ID":
+      return { ...state, id: action.payload };
     default:
       return state;
   }
@@ -78,13 +82,17 @@ const handleSubmit = async (event) => {
       email: state.email,
       password: state.password,
     });
-    const userRole = response.data;
-    dispatch({ type: "LOGIN_SUCCESS", payload: userRole });
-    if (userRole === "admin") {
+
+    const { id, role } = response.data;
+    sessionStorage.setItem("id", id);
+
+    dispatch({ type: "STORE_ID", payload: id});
+    dispatch({ type: "LOGIN_SUCCESS", payload: role });
+    if (role === "admin") {
       window.location.replace("/admin");
-    } else if (userRole === "seller") {
+    } else if (role === "seller") {
       window.location.replace("/seller");
-    } else if (userRole === "carpenter") {
+    } else if (role === "carpenter") {
       window.location.replace("/carpenter");
     } else {
       window.location.replace("/customer");
