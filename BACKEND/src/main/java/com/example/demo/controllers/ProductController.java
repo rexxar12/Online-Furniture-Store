@@ -39,9 +39,9 @@ public class ProductController {
         List<ProductDTO> responses = new ArrayList<>();
         for (Product product : products) {
             ProductDTO response = new ProductDTO();
-            
+            response.setProductImage(product.getProductImage());
             response.setPname(product.getPname());
-            
+            response.setDescription(product.getDescription());
             response.setSeller(product.getSeller());
             response.setCategory(product.getCategory());
             responses.add(response);

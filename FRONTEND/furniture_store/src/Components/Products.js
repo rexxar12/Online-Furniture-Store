@@ -1,10 +1,21 @@
-import React from 'react';
+import React from "react";
+import { useLocation } from 'react-router-dom';
 
-const Products = () => {
+function Products() {
+  const { state } = useLocation();
+  const products = state.products || [];
+
   return (
     <div>
-      <h2>Products Component</h2>
-      <p>Products homepage</p>
+      {products.map((product) => (
+        <div key={product.id}>
+          <img src={`data:image/png;base64,${product.productImage}`} alt={product.pname} />
+          <p>{product.pname}</p>
+          <p>{product.description}</p>
+          <p>{product.seller.sname}</p>
+          <p>{product.category.category}</p>
+        </div>
+      ))}
     </div>
   );
 }

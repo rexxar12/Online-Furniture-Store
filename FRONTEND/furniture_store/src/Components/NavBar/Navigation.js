@@ -3,6 +3,8 @@ import './NavBarStyles.css'
 import Lottie from 'react-lottie-player'
 import cat from './cat.json'
 import React, { useEffect, useRef,useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function ColorSchemesExample() {
   const animationRef = useRef(null);
@@ -32,6 +34,20 @@ function ColorSchemesExample() {
   }, []);
   const [showSearchAlert, setShowSearchAlert] = useState(false);
 
+
+  //searchbox logic
+  const [categoryName, setCategoryName] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:8080/products/search?categoryName=${categoryName}`);
+      navigate(`/products?categoryName=${categoryName}`, { state: { products: response.data } });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
 <nav className="navbar navbar-expand-lg white NavbarItems">
   
@@ -46,12 +62,16 @@ function ColorSchemesExample() {
         <div className="col-12">
         <div className="container h-100">
       <div className="d-flex justify-content-left h-100">
+    <form onSubmit={handleSearch}>
         <div className="searchbar">
-          <input className="search_input" type="text" name="" placeholder="Search..."/>
-          <a href="#" className="search_icon"><i className="fas fa-search"></i></a>
+          <input className="search_input" type="text" value={categoryName} onChange={(event) => setCategoryName(event.target.value)} placeholder="Search Products..."/>
+          <a type='submit' className="search_icon"><i className="fas fa-search"></i></a>
         </div>
+        </form>
       </div>
     </div>
+
+
         </div>
     </div>
 </div>
