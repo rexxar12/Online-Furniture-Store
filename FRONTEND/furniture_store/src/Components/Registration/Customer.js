@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage,Form } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import './Register.css';
-import { Card,Row,Col, Container } from 'react-bootstrap';
+import { Row,Col } from 'react-bootstrap';
 
 
 
@@ -58,7 +58,7 @@ const Registration = () => {
 
           <div className='form-outline'>
             <label htmlFor="fname" className="form-label">First Name:</label>
-            <Field type="text" name="fname" id="fname"  class="form-control form-control-lg"/>
+            <Field type="text" name="fname" id="fname"  className="form-control form-control-lg"/>
             <ErrorMessage name="fname" component="div" className="error" />
             </div>
             </Col>
@@ -102,7 +102,7 @@ const Registration = () => {
             </div>
          
           <div className="mt-2 pt-2 text-center">
-          <button type="submit" disabled={isSubmitting} class="btn btn-dark btn-rounded btn-lg justify-content-center align-items-center">
+          <button type="submit" disabled={isSubmitting} className="btn btn-dark btn-rounded btn-lg justify-content-center align-items-center">
             Register
           </button>
           </div>

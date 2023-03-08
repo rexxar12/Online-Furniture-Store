@@ -1,10 +1,9 @@
-import React from 'react';
 import { Formik, Field, ErrorMessage,Form } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import './Register.css';
-import { Card,Row,Col, Container } from 'react-bootstrap';
-
+import {Row,Col} from 'react-bootstrap';
+import { useState,useEffect } from 'react';
 
 
 const API_URL = 'http://localhost:8080/api/sellers/register';
@@ -17,8 +16,15 @@ const Registration = () => {
     address: '',
     contact: '',
     gstno: '',
-    area:'',
+    city_id:'',
   };
+  const [cities, setCities] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/cities')
+            .then(response => setCities(response.data))
+            .catch(error => console.log(error));
+    }, []);
 
   const validationSchema = Yup.object().shape({
     sname: Yup.string().required('Name is required').matches(/[A-Z]/, 'Enter Atleast one Capital Letter'),
@@ -29,7 +35,7 @@ const Registration = () => {
     contact: Yup.string().required('Phone number is required').matches(/^\d{10}$/, 'Phone number must be 10 digits'),
     address: Yup.string().required('Address is required'),
     gstno: Yup.string().required('GST number is required').matches(/^\d{15}$/, 'GST number must be 15 digits'),
-    area: Yup.string().required('area number is required'),
+    city_id: Yup.string().required('city_id is required'),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -60,51 +66,65 @@ const Registration = () => {
 
           <div className='form-outline'>
             <label htmlFor="sname" className="form-label">Seller Name:</label>
-            <Field type="text" name="sname" id="sname"  class="form-control form-control-lg"/>
+            <Field type="text" name="sname" id="sname"  className="form-control form-control-lg"/>
             <ErrorMessage name="sname" component="div" className="error" />
             </div>
             </Col>
-            
             <Col className="col-md-6 mb-3">
             <div>
             <label htmlFor="email" className="form-label">Email:</label>
             <Field type="email" name="email" id="email" className='form-control form-control-lg' />
             <ErrorMessage name="email" component="div" className="error" />
           </div>
-      </Col>
+            </Col>
           </Row>
+
+          <Row>
+            <Col className="col-md-6 mb-3">
             <div>
             <span htmlFor="password" className='form-label'>Password:</span>
             <Field type="password" name="password" id="password" className='form-control form-control-lg'/>
             <ErrorMessage name="password" component="div" className="error" />
           </div>
-         
+            </Col>
+            <Col className="col-md-6 mb-3">
           <div >
             <span htmlFor="phoneNumber" className='form-label'>Phone Number:</span>
             <Field type="text" name="contact" id="contact" className='form-control form-control-lg'/>
             <ErrorMessage name="contact" component="div" className="error" />
           </div>
-          
+            </Col>
+          </Row>
+          <Row>
+            <Col className="col-md-6 mb-3">
             <div >
             <span htmlFor="gstno" className='form-label'>GST Number:</span>
             <Field type="text" name="gstno" id="gstno" className='form-control form-control-lg'/>
             <ErrorMessage name="gstno" component="div" className="error" />
             </div>
-         
+            </Col>
+            <Col className="col-md-6 mb-3">
           <div >
-            <span htmlFor="area" className='form-label'>Area Code:</span>
-            <Field type="text" name="area" id="area" className='form-control form-control-lg'/>
-            <ErrorMessage name="area" component="div" className="error" />
-            </div>
-         
+          <span htmlFor="city_id" className='form-label'>City:</span>
+            <Field as='select' id="city_id" name="city_id" value={cities.city_name} className='form-select form-select-lg'>
+                <option value="">Select a city</option>
+                {cities.map(city => (
+                    <option key={city.city_id} value={city.city_id}>{city.city_name}</option>
+                ))}
+            </Field>
+            <ErrorMessage name="city_id" component="div" className="error" />
+          </div>
+          </Col>
+          </Row>
+          <Row>
             <div >
             <span htmlFor="address">Address:</span>
             <Field type="textbox" name="address" id="address" className='form-control form-control-lg' />
             <ErrorMessage name="address" component="div" className="error" />
             </div>
-         
+         </Row>
           <div className="mt-2 pt-2 text-center">
-          <button type="submit" disabled={isSubmitting} class="btn btn-dark btn-rounded btn-lg justify-content-center align-items-center">
+          <button type="submit" disabled={isSubmitting} className="btn btn-dark btn-rounded btn-lg justify-content-center align-items-center">
             Register
           </button>
           </div>

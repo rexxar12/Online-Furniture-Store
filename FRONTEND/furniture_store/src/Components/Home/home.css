@@ -1,8 +1,22 @@
 .home{
-    background: url(./Images/1.jpg);
+    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
 }
+
+.below-nav{
+    margin-left: 20px;
+    margin-right: 20px;
+
+    
+
+
+}
+.carousel{
+    height:600px;
+}
+
+.carousel-items{}

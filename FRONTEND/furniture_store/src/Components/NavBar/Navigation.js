@@ -43,7 +43,7 @@ function ColorSchemesExample() {
     e.preventDefault();
     try {
       const response = await axios.get(`http://localhost:8080/products/search?categoryName=${categoryName}`);
-      navigate(`/products?categoryName=${categoryName}`, { state: { products: response.data } });
+      navigate(`/product-search?categoryName=${categoryName}`, { state: { products: response.data } });
     } catch (error) {
       console.log(error);
     }

@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.dto.SellerDTO;
 import com.example.demo.entities.Seller;
 
 
@@ -16,7 +17,7 @@ import com.example.demo.entities.Seller;
 @Repository
 public interface SellerRepository extends JpaRepository<Seller, Integer>{
 	    Optional<Seller> findByEmail(String email);
-	    Seller save(Seller s);
+	    SellerDTO save(SellerDTO s);
 	    List<Seller> findByStatus(int status);
 	    void deleteBySid(int sid);
 	    
