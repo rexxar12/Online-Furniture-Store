@@ -9,8 +9,8 @@ import axios from 'axios';
 function ColorSchemesExample() {
   const animationRef = useRef(null);
 
+  const anim = animationRef.current;
   useEffect(() => {
-    const anim = animationRef.current;
     if (anim) {
       anim.addEventListener('mouseenter', () => {
         anim.play();
@@ -32,7 +32,7 @@ function ColorSchemesExample() {
       }
     };
   }, []);
-  const [showSearchAlert, setShowSearchAlert] = useState(false);
+  
 
 
   //searchbox logic
@@ -43,6 +43,7 @@ function ColorSchemesExample() {
     e.preventDefault();
     try {
       const response = await axios.get(`http://localhost:8080/products/search?categoryName=${categoryName}`);
+      console.log("search block")
       navigate(`/product-search?categoryName=${categoryName}`, { state: { products: response.data } });
     } catch (error) {
       console.log(error);
@@ -65,7 +66,7 @@ function ColorSchemesExample() {
     <form onSubmit={handleSearch}>
         <div className="searchbar">
           <input className="search_input" type="text" value={categoryName} onChange={(event) => setCategoryName(event.target.value)} placeholder="Search Products..."/>
-          <a type='submit' className="search_icon"><i className="fas fa-search"></i></a>
+          <button type='submit' className="search_icon"><i className="fas fa-search"></i></button>
         </div>
         </form>
       </div>
@@ -115,36 +116,3 @@ function ColorSchemesExample() {
 }
 
 export default ColorSchemesExample;
-
-{/* <nav className="NavbarItems">
-      <h1 className="logo">OFS</h1>
-      <ul className="nav-menu">
-        {MenuData.map((item, index) => {
-          return (
-            <li key={index}>
-              <a href={item.url} className={item.cName}>
-                {item.title}
-              </a>
-            </li>
-          );
-        })}
-        <li onMouseEnter={() => {
-              animationRef.current.play();
-            }}
-            onMouseLeave={() => {
-              animationRef.current.setDirection(-1);
-              animationRef.current.play();
-            }}>
-              <a href="/reg">
-        <Lottie
-              loop={false}
-              autoPlay={false}
-              animationData={cat}
-              style={{ width: 140, height: 140 }}
-              ref={animationRef}
-              className='icon'
-            />
-          </a>
-        </li>
-      </ul>
-    </nav> */}

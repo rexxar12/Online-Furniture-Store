@@ -4,7 +4,7 @@ import RegisterSeller from './Components/Registration/Seller';
 import Admin from './Components/Admin';
 import Seller from './Components/Seller/Seller';
 import Carpenter from './Components/Carpenter';
-import Customer from './Components/Customer';
+import Customer from './Components/Customer/Customer';
 import Products from './Components/Products/Products';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Reg from './Components/Reg/Reg'
@@ -31,7 +31,7 @@ function App() {
             <Route path='/admin' element={<Admin/>} component={requireAuth(Admin)}/>
             <Route path='/seller' element={<Seller/>}/>
             <Route path='/carpenter' element={<Carpenter/>}/>
-            <Route path='/customer' element={<Customer/>}/>
+            <Route path='/customer/home' element={<Customer/>}/>
             <Route path='/products' element={<Products/>}/>
             <Route path='/product-search' element={<ProductSearch/>}/>
             <Route path='/reg' element={<Reg/>}/>

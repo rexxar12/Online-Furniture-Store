@@ -14,7 +14,8 @@ export const loginRequest = () => {
 export const loginSuccess = (userRole) => {
   return {
     type: LOGIN_SUCCESS,
-    payload: userRole
+    payload: userRole,
+    
   };
 };
 export const storeId = (id) => {

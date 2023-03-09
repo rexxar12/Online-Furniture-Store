@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.LoginResponse;
+import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.SellerRepository;
 import com.example.demo.services.LoginService;
 
@@ -26,24 +27,29 @@ public class LoginController {
     private LoginService userService;
     @Autowired
     private SellerRepository sellerRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
     
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody Map<String, String> loginDetails) {
         String email = loginDetails.get("email");
         String password = loginDetails.get("password");
         int id;
+        int status;
 
         if (userService.authenticate(email, password)) {
             int userRole = userService.getUserRole(email, password);
             if (userRole == 1) {
-                return ResponseEntity.ok(new LoginResponse(0, "admin"));
+                return ResponseEntity.ok(new LoginResponse(0, "admin",1));
             } else if (userRole == 2) {
                 id = sellerRepository.findSidByEmail(email);
-                return ResponseEntity.ok(new LoginResponse(id, "seller"));
+                status= sellerRepository.findStatusByEmail(email);
+                return ResponseEntity.ok(new LoginResponse(id, "seller",status));
             } else if (userRole == 3) {
-                return ResponseEntity.ok(new LoginResponse(0, "carpenter"));
+                return ResponseEntity.ok(new LoginResponse(0, "carpenter",1));
             } else {
-                return ResponseEntity.ok(new LoginResponse(0, "customer"));
+            	id = customerRepository.findCidByEmail(email);
+                return ResponseEntity.ok(new LoginResponse(id, "customer",1));
             }
         } else {
             return ResponseEntity.badRequest().body(null);
@@ -51,6 +57,9 @@ public class LoginController {
     
         
     }
+    
+    
+    
 
 }
 

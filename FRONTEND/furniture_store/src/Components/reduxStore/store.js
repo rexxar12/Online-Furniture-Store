@@ -9,6 +9,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
+      sessionStorage.setItem("logged","true");
       return {
         ...state,
         userLoggedIn: true,

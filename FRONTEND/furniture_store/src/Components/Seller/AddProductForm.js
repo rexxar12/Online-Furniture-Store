@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Add.css';
 import { Row,Col} from 'react-bootstrap';
-import { height } from '@mui/system';
+
 
 function AddProductForm() {
   //Add Product logic
-  const sid=sessionStorage.getItem('id');
   const [product, setProduct] = useState({ pname: '', description: '', image: null });
-  const [sellerId, setSellerId] = useState(sid);
+  const sellerId = sessionStorage.getItem('id');
   const [message, setMessage] = useState('');
 
   const handleInputChange = (event) => {
@@ -28,7 +27,7 @@ function AddProductForm() {
     formData.append('description', product.description);
     formData.append('image', product.image);
     try {
-      const response = await axios.post(`http://localhost:8080/api/sellers/products?sellerId=${sellerId}`, formData, {
+      const response = await axios.post(`http://localhost:8080/api/sellers/addproducts?sellerId=${sellerId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -98,19 +97,3 @@ function AddProductForm() {
 export default AddProductForm
 
 
-
-{/* <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="pname">Product Name:</label>
-          <input type="text" id="pname" name="pname" value={product.pname} onChange={handleInputChange} required />
-        </div>
-        <div>
-          <label htmlFor="description">Product Description:</label>
-          <textarea id="description" name="description" value={product.description} onChange={handleInputChange} required></textarea>
-        </div>
-        <div>
-          <label htmlFor="image">Product Image:</label>
-          <input type="file" id="image" name="image" accept="image/*" onChange={handleFileChange} required />
-        </div>
-        <button type="submit">Add Product</button>
-      </form> */}

@@ -9,7 +9,7 @@ function Products() {
     <header>
       <div class="container ">
       <div class="container hdr">
-        <img src={require("./Images/1.jpg")} className="jumbo-image img-fluid" alt="Responsive image"/>
+        
         
 
 

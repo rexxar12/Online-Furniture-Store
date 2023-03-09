@@ -58,3 +58,11 @@
     border-radius: 5px;
     background-color: #fdefe6;
 }
+.card-05{
+    padding: 20px;
+    
+    align-items: center;
+    column-gap: 0.5rem;
+    border-radius: 5px;
+    background-color: #db8f48;
+}

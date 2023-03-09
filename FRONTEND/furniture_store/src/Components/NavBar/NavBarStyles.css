@@ -93,6 +93,23 @@ ul{
     }
 
     .search_icon{
+        background: #353b48;
+        outline: none;
+        border:none;
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+    .search_icon:focus{
+        background: #353b48;
+        outline: none;
+        border: none;
     height: 40px;
     width: 40px;
     float: right;

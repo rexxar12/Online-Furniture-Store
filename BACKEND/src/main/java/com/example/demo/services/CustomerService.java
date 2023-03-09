@@ -42,6 +42,7 @@ public class CustomerService {
 	        cred.setEmail(customer.getEmail());
 	        cred.setPassword(customer.getPassword());
 	        cred.setRole(4);
+	        cred.setStatus(1);
 	        // Save the new Customer to the database
 	        customerRepository.save(c);
 	        loginRepository.save(cred);

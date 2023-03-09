@@ -5,7 +5,6 @@ import {
   MDBContainer,
   MDBCol,
   MDBRow,
-  MDBBtn,
   MDBInput,
 }
 from 'mdb-react-ui-kit';
@@ -14,7 +13,7 @@ import { Card } from 'react-bootstrap';
 import './Login.css';
 import Lottie from 'react-lottie-player'
 import login from './login.json'
-import { useEffect, useRef,useState } from "react";
+import { useEffect, useRef } from "react";
 
 
 
@@ -83,9 +82,10 @@ const handleSubmit = async (event) => {
       password: state.password,
     });
 
-    const { id, role } = response.data;
+    const { id, role,status } = response.data;
     sessionStorage.setItem("id", id);
 
+    if(status===0){alert("We are working on setting up your account. Please wait a few hours or contact us.")}else{
     dispatch({ type: "STORE_ID", payload: id});
     dispatch({ type: "LOGIN_SUCCESS", payload: role });
     if (role === "admin") {
@@ -95,10 +95,12 @@ const handleSubmit = async (event) => {
     } else if (role === "carpenter") {
       window.location.replace("/carpenter");
     } else {
-      window.location.replace("/customer");
+      window.location.replace("/customer/home");
     }
+  }
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", payload: error.response.data });
+    alert("Login failed. Please check login details again.")
   }
 };
 

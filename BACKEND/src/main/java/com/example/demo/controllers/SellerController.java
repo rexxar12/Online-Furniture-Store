@@ -58,7 +58,7 @@ public class SellerController {
  
     
 
-    @PostMapping(value = "/products", consumes = { "multipart/form-data" })
+    @PostMapping(value = "/addproducts", consumes = { "multipart/form-data" })
     public Product addProduct(@ModelAttribute Product product, @RequestParam("image") MultipartFile image, @RequestParam("sellerId") int sellerId) throws IOException {
         Product newProduct = productService.addProduct(product, image, sellerId);
         return newProduct;

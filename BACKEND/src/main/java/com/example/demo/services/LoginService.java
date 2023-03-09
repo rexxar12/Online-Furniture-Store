@@ -14,6 +14,7 @@ public class LoginService {
     private LoginRepository userRepository;
 
     public boolean authenticate(String email, String password) {
+    	
         Login user = userRepository.findByEmailAndPassword(email, password);
         return user != null;
     }

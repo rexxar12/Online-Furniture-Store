@@ -22,7 +22,9 @@ public class Product {
     private String description;
     @Lob
     private byte[] productImage;
-    
+    private long price;
+    private int stock;
+    private int rating;
     
     @ManyToOne
     @JoinColumn(name = "sid")

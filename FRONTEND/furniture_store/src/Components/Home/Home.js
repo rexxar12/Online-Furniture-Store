@@ -9,7 +9,9 @@ import ProductList from './ProductList/ProductList';
 
 function Homepage() {
 
-
+  if(sessionStorage.getItem("logged"!=="true")){
+    sessionStorage.setItem("logged","false")
+  }
 
 
   return (

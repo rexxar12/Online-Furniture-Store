@@ -7,3 +7,17 @@
 .App {
   text-align: center;
 }
+
+.search_btn{
+
+  background-color: #353b48;
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:white;
+  text-decoration:none;
+}

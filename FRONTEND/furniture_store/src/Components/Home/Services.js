@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap";
 import { motion } from "framer-motion"
+import './home.css';
 
 function Services() {
   return (
@@ -58,7 +59,7 @@ function Services() {
     <motion.div whileHover={{scale: 1.1}}>
     <Card>
         <div>
-    <Card.Body className='card-03'>
+    <Card.Body className='card-05'>
         <Card.Title className="mb-3">Latest Designs</Card.Title>
         <Card.Text>
             Our Sellers have the latest designs.
