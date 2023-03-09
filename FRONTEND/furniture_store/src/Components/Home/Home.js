@@ -1,12 +1,17 @@
 import React from 'react';
 import Navbar from '../NavBar/Navigation';
 import Carousel from 'react-bootstrap/Carousel';
-
+import { Container, Col, Row } from "react-bootstrap";
+import { data } from "./data";
 import './home.css'
-
-
+import Services from './Services';
+import ProductList from './ProductList/ProductList';
 
 function Homepage() {
+
+
+
+
   return (
     <>
     <Navbar/>
@@ -38,6 +43,24 @@ function Homepage() {
         </Carousel.Item>
       </Carousel>
     </div>
+    <Services/>
+
+
+
+    <div className="trending_products">
+      <section>
+      <Container>
+        <Row>
+          <Col lg="12" className="text-center">
+          <h2>Trending Prodcuts</h2>
+          <Row className='mt-5'>
+              <ProductList data={data}/>
+          </Row>
+          </Col>
+        </Row>
+      </Container>
+      </section>
+    </div>
     </div>
     </>
   );
@@ -46,3 +69,7 @@ function Homepage() {
 export default Homepage;
 
 
+{/* <>
+              {data.map((item)=>(<ProductList item={item}/>
+              ))}
+              </> */}

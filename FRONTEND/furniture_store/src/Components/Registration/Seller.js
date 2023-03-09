@@ -35,7 +35,7 @@ const Registration = () => {
     contact: Yup.string().required('Phone number is required').matches(/^\d{10}$/, 'Phone number must be 10 digits'),
     address: Yup.string().required('Address is required'),
     gstno: Yup.string().required('GST number is required').matches(/^\d{15}$/, 'GST number must be 15 digits'),
-    city_id: Yup.string().required('city_id is required'),
+    city_id: Yup.string().required('City is required'),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {

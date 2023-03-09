@@ -1,0 +1,16 @@
+package com.example.demo.dto;
+
+public class CustomerDTO {
+	
+	int cid;
+	String fname;
+	String lname;
+	String email;
+	String password;
+	String address;
+	String contact;
+	String gstno;
+	int city_id;
+	int status;
+	int role;
+}

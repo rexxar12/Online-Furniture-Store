@@ -30,10 +30,9 @@ public class Seller {
 	String password;
 	@Column(name="contact_number")
 	String contact;
-	
-	 @ManyToOne
-	 @JoinColumn(name="city_id")
-	 City city;
+	@ManyToOne
+	@JoinColumn(name="city_id")
+	City city;	
 	@Column
 	String address;
 	@Column

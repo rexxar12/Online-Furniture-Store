@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,10 +25,12 @@ public class Customer {
 	String password;
 	@Column(name="contact")
 	String contact;
-	@Column(name="area_id")
-	int area;
+	@ManyToOne
+	@JoinColumn(name="city_id")
+	City city;
 	@Column
 	String address;
+	
 	
 	public int getCid() {
 		return cid;
@@ -64,11 +68,12 @@ public class Customer {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	public int getArea() {
-		return area;
+
+	public City getCity() {
+		return city;
 	}
-	public void setArea(int area) {
-		this.area = area;
+	public void setCity(City city) {
+		this.city = city;
 	}
 	public String getAddress() {
 		return address;

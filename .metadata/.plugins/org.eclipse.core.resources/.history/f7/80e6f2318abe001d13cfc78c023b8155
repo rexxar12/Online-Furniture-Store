@@ -1,0 +1,38 @@
+package com.example.demo.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Customer;
+import com.example.demo.entities.Login;
+
+import com.example.demo.exceptions.EmailAlreadyExistsException;
+import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.LoginRepository;
+
+@Service
+public class CustomerService {
+	 @Autowired
+	    private CustomerRepository customerRepository;
+	    @Autowired
+	    private LoginRepository loginRepository;
+
+	    public void registerCustomer(Customer customer) throws EmailAlreadyExistsException {
+	        // Check if the email is already in use
+	        Optional<Customer> existingcustomer = customerRepository.findByEmail(customer.getEmail());
+	        if (existingcustomer.isPresent()) {
+	            throw new EmailAlreadyExistsException("Email is already in use");
+	        }
+	        
+	        Login cred=new Login();
+	        cred.setEmail(customer.getEmail());
+	        cred.setPassword(customer.getPassword());
+	        cred.setRole(4);
+	        // Save the new Seller to the database
+	        customerRepository.save(customer);
+	        loginRepository.save(cred);
+	    }
+
+}
