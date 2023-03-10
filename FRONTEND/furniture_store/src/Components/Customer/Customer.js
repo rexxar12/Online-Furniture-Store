@@ -22,6 +22,7 @@ const Customer = () => {
       navigate('/');
     };
 
+    console.log(sessionStorage.getItem("id"));
   return (
    <>
     <Navbar/>

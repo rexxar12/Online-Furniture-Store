@@ -1,0 +1,18 @@
+package com.example.demo.dto;
+
+public class CartDTO {
+	private int cid;
+	private int product_id;
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public int getProduct_id() {
+		return product_id;
+	}
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+}

@@ -19,7 +19,7 @@ function ProductCard({item}) {
                     {item.price}
 
                 </Card.Text> 
-                <Btnn productName={item.name}/>
+                <Btnn itemName={item.name} />
             </Card.Body>
             </Card>
             </motion.div>

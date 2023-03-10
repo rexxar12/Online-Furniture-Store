@@ -14,12 +14,25 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    private int quantity;
+    
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    
+    @ManyToOne
+    @JoinColumn(name="cid")
+    private Customer customer;
+    
+    
+    public Customer getCustomer() {
+		return customer;
+	}
 
-    private int quantity;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 
 	public int getId() {
 		return id;
@@ -45,5 +58,11 @@ public class Cart {
 		this.quantity = quantity;
 	}
 
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", quantity=" + quantity + ", product=" + product + ", customer=" + customer + "]";
+	}
+	
+	
     
 }
