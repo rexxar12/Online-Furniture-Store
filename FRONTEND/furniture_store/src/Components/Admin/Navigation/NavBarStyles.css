@@ -1,0 +1,132 @@
+ul{
+    list-style-type: none;
+}
+
+.NavbarItems{
+    
+    
+    
+    font-size: 1.2rem;
+    padding: 0 10px;
+    /* background-color: #ce97dd; */
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); */
+    width: 95%;
+    height:100px;
+    border-radius: 13px;
+    position: fixed;
+    top: ;
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+
+.nav-menu{
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+    grid-gap: 15px;
+    list-style: none;
+    align-items: center;
+    text-align: center;
+    justify-content: end;
+    
+}   
+
+.nav-item{
+    text-decoration: none;
+    color: #000000;
+    padding-bottom: 5px;
+    padding-top: 0.7rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+    
+    
+
+}
+
+.nav-item:hover{
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    color: rgb(80, 80, 238);
+
+}
+
+.logo{
+    color: #000000;
+    padding-left: 20px;
+}
+.icon{
+    margin-bottom: 25px;
+
+    
+}
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:blue;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #5b3ce7;
+    }
+
+    .search_icon{
+        background: #353b48;
+        outline: none;
+        border:none;
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+    .search_icon:focus{
+        background: #353b48;
+        outline: none;
+        border: none;
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+
+
+
+
+    .logout{
+        
+
+        
+    }
+/* <Lottie animationData={cat} play style={{ width: 120, height: 150 }} className='mb-4'/> */

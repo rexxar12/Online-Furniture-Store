@@ -33,10 +33,8 @@ public class CartDTO {
 		this.category = category;
 	}
 
-	public CartDTO(int cart_id,String productName, double price, int quantity, double total,byte[] productImage,String category) {
-        this.category=category;
-		this.productImage=productImage;
-		this.cart_id=cart_id;
+	public CartDTO(int cart_id,String productName, double price, int quantity, double total) {
+        this.cart_id=cart_id;
     	this.productName = productName;
         this.price = price;
         this.quantity = quantity;

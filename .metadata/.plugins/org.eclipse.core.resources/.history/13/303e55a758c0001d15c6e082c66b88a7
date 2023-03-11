@@ -39,8 +39,6 @@ public class CartController {
     @Autowired
     private ProductRepository productRepository;
     
-    
-    
 
     @GetMapping("/{cid}/{product_name}")
     public ResponseEntity<Cart> getCartByCustomerIdAndProductId(
@@ -86,8 +84,7 @@ public class CartController {
                 long price = product.getProductDetails().getPrice();
                 double total = price * quantity;
                 int cart_id=cart.getId();
-                
-                cartDTOs.add(new CartDTO(cart_id,product.getPname(), price, quantity, total,product.getProductImage(),product.getCategory().getCategory()));
+                cartDTOs.add(new CartDTO(cart_id,product.getPname(), price, quantity, total));
             }
             return new ResponseEntity<>(cartDTOs, HttpStatus.OK);
         } else {

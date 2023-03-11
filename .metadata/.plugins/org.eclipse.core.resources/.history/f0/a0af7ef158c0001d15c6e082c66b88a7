@@ -14,29 +14,9 @@ public class CartDTO {
     private double price;
     private int quantity;
     private double total;
-    private byte[] productImage;
-    private String category;
 
-    public byte[] getProductImage() {
-		return productImage;
-	}
-
-	public void setProductImage(byte[] productImage) {
-		this.productImage = productImage;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public CartDTO(int cart_id,String productName, double price, int quantity, double total,byte[] productImage,String category) {
-        this.category=category;
-		this.productImage=productImage;
-		this.cart_id=cart_id;
+    public CartDTO(int cart_id,String productName, double price, int quantity, double total) {
+        this.cart_id=cart_id;
     	this.productName = productName;
         this.price = price;
         this.quantity = quantity;

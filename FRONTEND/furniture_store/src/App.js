@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import RegisterSeller from './Components/Registration/Seller';
-import Admin from './Components/Admin';
+import Admin from './Components/Admin/Admin';
 import Seller from './Components/Seller/Seller';
 import Carpenter from './Components/Carpenter';
 import Customer from './Components/Customer/Customer';
