@@ -14,6 +14,7 @@ import './Product.css';
 function ProductSearch() {
     const { state } = useLocation();
   const products = state.products || [];
+  console.log(products);
   return (
     <MDBContainer fluid className="my-5">
       <MDBRow className="justify-content-center">

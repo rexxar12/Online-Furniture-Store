@@ -1,8 +1,0 @@
-package com.example.demo.dto;
-
-public class Credential {
-	private int id;
-	private String email;
-	
-
-}

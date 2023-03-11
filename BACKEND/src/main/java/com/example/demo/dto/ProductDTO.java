@@ -12,6 +12,9 @@ public class ProductDTO {
    
     private Seller seller;
     private Category category;
+    private long price;
+    private int stock;
+    private int rating;
     
     
     
@@ -21,6 +24,25 @@ public class ProductDTO {
     
     
     
+    
+	public long getPrice() {
+		return price;
+	}
+	public void setPrice(long price) {
+		this.price = price;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	public ProductDTO() {
 		
 	}

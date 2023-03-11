@@ -26,7 +26,30 @@ public class Product {
     private int stock;
     private int rating;
     
-    @ManyToOne
+    public long getPrice() {
+		return price;
+	}
+
+	public void setPrice(long price) {
+		this.price = price;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	@ManyToOne
     @JoinColumn(name = "sid")
     private Seller seller;
 

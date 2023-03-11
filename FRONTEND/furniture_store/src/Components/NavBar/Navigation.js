@@ -42,13 +42,26 @@ function ColorSchemesExample() {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8080/products/search?categoryName=${categoryName}`);
+      // First, search by categoryName
+      let response = await axios.get(`http://localhost:8080/products/c/search?categoryName=${categoryName}`);
       console.log("search block")
-      navigate(`/product-search?categoryName=${categoryName}`, { state: { products: response.data } });
+      if (response.data.length > 0) {
+        navigate(`/product-search?categoryName=${categoryName}`, { state: { products: response.data } });
+      } else {
+        // If no products are found by categoryName, search by productName
+        response = await axios.get(`http://localhost:8080/products/p/search?productName=${categoryName}`);
+        if (response.data) {
+          navigate(`/product-details?productName=${categoryName}`, { state: { products: response.data } });
+        } else {
+          // If no products are found by productName, display an error message
+          console.log("No products found");
+        }
+      }
     } catch (error) {
       console.log(error);
     }
   }
+  
   return (
 <nav className="navbar navbar-expand-lg white NavbarItems">
   

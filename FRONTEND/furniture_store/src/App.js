@@ -13,6 +13,7 @@ import AddProduct from './Components/Seller/AddProductForm'
 import {requireAuth} from './utils/Auth'
 import './index.css'
 import ProductSearch from './Components/Products/ProductSearch';
+import ProductP from './Components/Products/ProductP';
 
 
 function App() {
@@ -33,9 +34,10 @@ function App() {
             <Route path='/carpenter' element={<Carpenter/>}/>
             <Route path='/customer/home' element={<Customer/>}/>
             <Route path='/products' element={<Products/>}/>
-            <Route path='/product-search' element={<ProductSearch/>}/>
             <Route path='/reg' element={<Reg/>}/>
             <Route path='/seller/add-product' element={<AddProduct/>}/>
+            <Route path='/product-search' element={<ProductSearch/>}/>
+            <Route path='/product-details/' element={<ProductP/>}/>
             
             
             
