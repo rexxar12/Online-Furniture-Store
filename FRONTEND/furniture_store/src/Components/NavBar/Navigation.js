@@ -8,19 +8,18 @@ import axios from 'axios';
 
 function ColorSchemesExample() {
   const animationRef = useRef(null);
+  const [animationDirection, setAnimationDirection] = useState(1);
 
-  const anim = animationRef.current;
   useEffect(() => {
+    const anim = animationRef.current;
     if (anim) {
       anim.addEventListener('mouseenter', () => {
+        setAnimationDirection(1);
         anim.play();
       });
       anim.addEventListener('mouseleave', () => {
-        anim.setDirection(-1);
+        setAnimationDirection(-1);
         anim.play();
-      });
-      anim.addEventListener('complete', () => {
-        anim.setDirection(1);
       });
     }
     return () => {
@@ -28,7 +27,6 @@ function ColorSchemesExample() {
       if (anim) {
         anim.removeEventListener('mouseenter');
         anim.removeEventListener('mouseleave');
-        anim.removeEventListener('complete');
       }
     };
   }, []);
@@ -109,9 +107,11 @@ function ColorSchemesExample() {
             }} >
               <a href="/reg">
         <Lottie
+        key={animationDirection}
               loop={false}
               autoPlay={false}
               animationData={cat}
+              direction={animationDirection}
               style={{ width: 140, height: 80 }}
               ref={animationRef}
               className='icon'

@@ -1,15 +1,21 @@
 package com.example.demo.entities;
 
-import javax.persistence.Column;
+import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 
 @Entity
@@ -22,33 +28,7 @@ public class Product {
     private String description;
     @Lob
     private byte[] productImage;
-    private long price;
-    private int stock;
-    private int rating;
-    
-    public long getPrice() {
-		return price;
-	}
-
-	public void setPrice(long price) {
-		this.price = price;
-	}
-
-	public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+   
 	@ManyToOne
     @JoinColumn(name = "sid")
     private Seller seller;
@@ -57,10 +37,37 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
     
+    @OneToOne(cascade = CascadeType.ALL)
+    private ProductDetails productDetails;
+    
+    
+    
+    
+    public void setWood(String wood) {
+    	this.productDetails.setWood(wood);
+    }
+    
+    public String getWood() {
+    	return this.productDetails.getWood();
+    }
+    
     
     // constructors, getters and setters
     
-    public Category getCategory() {
+    @Override
+	public String toString() {
+		return "Product [pid=" + pid + ", pname=" + pname + ", description=" + description + ",  seller=" + seller.getSid() + ", category=" + category.getCategory_id() + "]";
+	}
+
+	public ProductDetails getProductDetails() {
+		return productDetails;
+	}
+
+	public void setProductDetails(ProductDetails productDetails) {
+		this.productDetails = productDetails;
+	}
+
+	public Category getCategory() {
 		return category;
 	}
 

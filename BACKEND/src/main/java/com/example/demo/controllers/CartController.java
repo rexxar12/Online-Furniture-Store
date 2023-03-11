@@ -54,14 +54,16 @@ public class CartController {
         }
     }
 
-    @PostMapping("/add/{cid}/{product_name}")
+    @PostMapping("/add/{cid}/{product_name}/{wood}")
     public ResponseEntity<Cart> addProductToCart(
     @PathVariable("cid") int cid,
-    @PathVariable("product_name") String product_name) {
+    @PathVariable("product_name") String product_name,
+    @PathVariable("wood") String wood) {
     	
     	Cart cart=new Cart();
     	Product p=productRepository.findByName(product_name);
     	Customer c= customerRepository.findByCid(cid);
+    	p.setWood(wood);
     	cart.setProduct(p);
     	cart.setCustomer(c);
     	cartRepository.save(cart);

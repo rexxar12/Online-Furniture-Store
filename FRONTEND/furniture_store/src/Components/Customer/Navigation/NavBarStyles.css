@@ -4,8 +4,8 @@ ul{
 
 .NavbarItems{
     
-    justify-content: space-between;
-    align-items: center;
+    
+    
     font-size: 1.2rem;
     padding: 0 10px;
     /* background-color: #ce97dd; */
@@ -119,5 +119,14 @@ ul{
     border-radius: 50%;
     color:white;
     text-decoration:none;
+    }
+
+
+
+
+    .logout{
+        
+
+        
     }
 /* <Lottie animationData={cat} play style={{ width: 120, height: 150 }} className='mb-4'/> */

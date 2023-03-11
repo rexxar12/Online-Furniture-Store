@@ -37,10 +37,8 @@ public class Seller {
 	String address;
 	@Column
 	int status;
-	
 	@Column(name="gst_number")
 	String gstno;
-	
 	@Column(name="role_id")
 	int role;
 	

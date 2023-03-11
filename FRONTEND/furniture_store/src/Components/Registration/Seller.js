@@ -19,7 +19,7 @@ const Registration = () => {
     city_id:'',
   };
   const [cities, setCities] = useState([]);
-
+  console.log(cities)
     useEffect(() => {
         axios.get('http://localhost:8080/cities')
             .then(response => setCities(response.data))
@@ -106,12 +106,17 @@ const Registration = () => {
             <Col className="col-md-6 mb-3">
           <div >
           <span htmlFor="city_id" className='form-label'>City:</span>
+
+
             <Field as='select' id="city_id" name="city_id" value={cities.city_name} className='form-select form-select-lg'>
                 <option value="">Select a city</option>
                 {cities.map(city => (
                     <option key={city.city_id} value={city.city_id}>{city.city_name}</option>
                 ))}
             </Field>
+
+
+
             <ErrorMessage name="city_id" component="div" className="error" />
           </div>
           </Col>

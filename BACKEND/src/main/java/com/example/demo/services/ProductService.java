@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.Category;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.Seller;
 import com.example.demo.repository.CategoryRepository;
@@ -27,9 +28,10 @@ public class ProductService {
         this.sellerRepository = sellerRepository;
     }
 
-    public Product addProduct(Product product, MultipartFile image, int sellerId) throws IOException {
+    public Product addProduct(Product product, MultipartFile image, int sellerId,int category_id) throws IOException {
         Seller seller = sellerRepository.findById(sellerId).orElseThrow(() -> new RuntimeException("Seller not found"));
-
+        Category c= categoryRepository.findByCategory_Id(category_id);
+        product.setCategory(c);
         product.setSeller(seller);
 
         if (!image.isEmpty()) {

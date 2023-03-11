@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.SellerDTO;
+import com.example.demo.entities.Category;
 import com.example.demo.entities.City;
 import com.example.demo.entities.Product;
+import com.example.demo.entities.ProductDetails;
 import com.example.demo.entities.Seller;
 import com.example.demo.exceptions.EmailAlreadyExistsException;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.services.CityService;
 import com.example.demo.services.ProductService;
 import com.example.demo.services.SellerService;
@@ -34,6 +37,8 @@ import com.example.demo.services.SellerService;
 public class SellerController {
     @Autowired
     private SellerService sellerService;
+    @Autowired
+    private CategoryRepository categoryRepository;
     
     
     
@@ -59,10 +64,20 @@ public class SellerController {
     
 
     @PostMapping(value = "/addproducts", consumes = { "multipart/form-data" })
-    public Product addProduct(@ModelAttribute Product product, @RequestParam("image") MultipartFile image, @RequestParam("sellerId") int sellerId) throws IOException {
-        Product newProduct = productService.addProduct(product, image, sellerId);
+    public Product addProduct(@ModelAttribute Product product, @RequestParam("image") MultipartFile image, @RequestParam("sellerId") int sellerId, @RequestParam("length") int length, @RequestParam("width") int width, @RequestParam("height") int height, @RequestParam("price") long price, @RequestParam("stock") int stock,@RequestParam("category_id") int category_id) throws IOException {
+        
+        
+    	ProductDetails productDetails = new ProductDetails();
+        productDetails.setLength(length);
+        productDetails.setWidth(width);
+        productDetails.setHeight(height);
+        productDetails.setPrice(price);
+        productDetails.setStock(stock);
+        product.setProductDetails(productDetails);
+        Product newProduct = productService.addProduct(product, image, sellerId,category_id);
         return newProduct;
     }
+
     
     
     @GetMapping("/")

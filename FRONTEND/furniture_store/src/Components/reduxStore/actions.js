@@ -4,7 +4,6 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
 export const STORE_ID = 'STORE_ID';
 
-
 export const loginRequest = () => {
   return {
     type: LOGIN_REQUEST
@@ -24,12 +23,6 @@ export const storeId = (id) => {
     payload: id
   };
 };
-
-
-
-
-
-
 
 export const loginFailure = (error) => {
   return {

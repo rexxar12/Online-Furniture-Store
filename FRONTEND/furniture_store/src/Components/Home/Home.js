@@ -71,7 +71,3 @@ function Homepage() {
 export default Homepage;
 
 
-{/* <>
-              {data.map((item)=>(<ProductList item={item}/>
-              ))}
-              </> */}

@@ -32,6 +32,11 @@ public class Category {
 		return products;
 	}
 
+	@Override
+	public String toString() {
+		return "Category [category_id=" + category_id + ", category=" + category + "]";
+	}
+
 	public Category() {
 		
 	}

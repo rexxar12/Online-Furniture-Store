@@ -47,28 +47,25 @@ public class ProductController {
             response.setDescription(product.getDescription());
             response.setSeller(product.getSeller());
             response.setCategory(product.getCategory());
-            response.setRating(product.getRating());
-            response.setPrice(product.getPrice());
-            response.setStock(product.getStock());
             responses.add(response);
         }
         return responses;
     }
     
     @GetMapping("/p/search")
-    public ProductDTO searchByProductName(@RequestParam String productName) {
+    public Product searchByProductName(@RequestParam String productName) {
     	Product products = productRepository.findByName(productName);
     	ProductDTO response=new ProductDTO();
     	response.setPid(products.getPid());
     	response.setPname(products.getPname());
     	response.setDescription(products.getDescription());
-    	response.setPrice(products.getPrice());
+    	
     	response.setProductImage(products.getProductImage());
-    	response.setRating(products.getRating());
-    	response.setStock(products.getStock());    	
+    	
+    	    	
     	response.setCategory(products.getCategory());
     	response.setSeller(products.getSeller());
-    	return response;
+    	return products;
     }
 }
 
