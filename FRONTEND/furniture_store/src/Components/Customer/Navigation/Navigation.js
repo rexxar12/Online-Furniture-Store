@@ -88,15 +88,13 @@ function ColorSchemesExample() {
           <a className="nav-link " aria-current="page" href="/customer/home">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href=""></a>
+          <a className="nav-link " aria-current="page" href="/customer/orders">Orders</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link logout" aria-current="page" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </li>
         <li className="nav-item">
         <a className="nav-link logout" aria-current="page"><Button variant="dark" onClick={handleLogout}>Logout</Button></a>
-          
-        </li>
-        <li className="nav-item">
-        <a className="nav-link logout" aria-current="page"><i class="fa-solid fa-cart-shopping"></i></a>
-          
         </li>
         
       </ul>

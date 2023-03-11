@@ -11,4 +11,7 @@ import com.example.demo.entities.Cart;
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Integer> {
     Cart findByProductPnameAndCustomerCid(String productName, int cid);
+    
+    
+    List<Cart> findByCustomerCid(int cid);
 }

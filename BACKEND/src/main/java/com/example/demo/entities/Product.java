@@ -40,10 +40,8 @@ public class Product {
     @OneToOne(cascade = CascadeType.ALL)
     private ProductDetails productDetails;
     
-    
-    
-    
-    public void setWood(String wood) {
+
+	public void setWood(String wood) {
     	this.productDetails.setWood(wood);
     }
     

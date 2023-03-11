@@ -1,7 +1,8 @@
 import React from 'react'
 import { Card, Col, Row } from "react-bootstrap";
 import { motion } from "framer-motion"
-import { icon } from '@fortawesome/fontawesome-svg-core';
+
+
 
 
 function Services() {
@@ -16,8 +17,8 @@ function Services() {
     <Card>
         <div>
     <Card.Body className='card-02'>
-        <i className='fa fa-truck'></i>
-    <Card.Title className="mb-3">Free Shipping</Card.Title>
+    
+    <Card.Title className="mb-3"><i class="fa-solid fa-truck"></i> Free Shipping</Card.Title>
         <Card.Text>
             Delivery is free within the city
         </Card.Text>
@@ -32,8 +33,8 @@ function Services() {
     <Card>
         <div>
     <Card.Body className='card-04'>
-    <i class="fa-regular fa-badge-check"></i>
-    <Card.Title className="mb-3">Quality Assurance</Card.Title>
+    
+    <Card.Title className="mb-3"><i class="fa-sharp fa-solid fa-check"></i> Quality Assurance</Card.Title>
         <Card.Text>
             We have quality assured products
         </Card.Text>
@@ -48,8 +49,8 @@ function Services() {
     <Card>
         <div>
     <Card.Body className='card-03'>
-    <i class="fa-regular fa-badge-percent"></i>
-        <Card.Title className="mb-3">Offers</Card.Title>
+    
+        <Card.Title className="mb-3"><i class="fa-solid fa-heart"></i> Offers</Card.Title>
         <Card.Text>
             Enjoy festivals with our fantastic offers.
         </Card.Text>
@@ -64,8 +65,8 @@ function Services() {
     <Card>
         <div>
     <Card.Body className='card-03'>
-    <i class="fa-sharp fa-solid fa-bolt"></i>
-        <Card.Title className="mb-3">Latest Designs</Card.Title>
+    
+        <Card.Title className="mb-3"><i class="fa-sharp fa-solid fa-bolt"></i> Latest Designs</Card.Title>
         <Card.Text>
             Our Sellers have the latest designs.
         </Card.Text>

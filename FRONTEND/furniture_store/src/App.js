@@ -14,6 +14,7 @@ import {requireAuth} from './utils/Auth'
 import './index.css'
 import ProductSearch from './Components/Products/ProductSearch';
 import ProductP from './Components/Products/ProductP';
+import CartItems from './Components/AddCart/Cart';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path='/seller/add-product' element={<AddProduct/>}/>
             <Route path='/product-search' element={<ProductSearch/>}/>
             <Route path='/product-details/' element={<ProductP/>}/>
+            <Route path='/cart' element={<CartItems/>}/>
             
             
             

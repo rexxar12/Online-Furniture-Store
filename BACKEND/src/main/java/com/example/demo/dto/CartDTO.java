@@ -1,40 +1,59 @@
 package com.example.demo.dto;
 
 public class CartDTO {
-	private int cid;
-	private int product_id;
-	private int quantity;
-	private int id;
-	private String product_name;
-	
-	public String getProduct_name() {
-		return product_name;
+	private int cart_id;
+    public int getCart_id() {
+		return cart_id;
 	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
 	}
-	public int getProduct_id() {
-		return product_id;
+
+	private String productName;
+    private double price;
+    private int quantity;
+    private double total;
+
+    public CartDTO(int cart_id,String productName, double price, int quantity, double total) {
+        this.cart_id=cart_id;
+    	this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.total = total;
+    }
+
+	public String getProductName() {
+		return productName;
 	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public int getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getId() {
-		return id;
+
+	public double getTotal() {
+		return total;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
-	public int getCid() {
-		return cid;
-	}
-	public void setCid(int cid) {
-		this.cid = cid;
-	}
+
+    
 }

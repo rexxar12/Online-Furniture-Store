@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -70,5 +72,44 @@ public class CartController {
     	
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+    
+    @GetMapping("/{cid}")
+    public ResponseEntity<List<CartDTO>> getCartItemsByCustomerId(@PathVariable("cid") int customerId) {
+        List<Cart> carts = cartRepository.findByCustomerCid(customerId);
+        if (!carts.isEmpty()) {
+            List<CartDTO> cartDTOs = new ArrayList<>();
+            for (Cart cart : carts) {
+                Product product = cart.getProduct();
+                int quantity = cart.getQuantity();
+                long price = product.getProductDetails().getPrice();
+                double total = price * quantity;
+                int cart_id=cart.getId();
+                cartDTOs.add(new CartDTO(cart_id,product.getPname(), price, quantity, total));
+            }
+            return new ResponseEntity<>(cartDTOs, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PutMapping("/update/{cid}/{cartId}/{quantity}")
+    public ResponseEntity<Cart> updateCartQuantity(@PathVariable("cartId") int cartId,
+                                                    @PathVariable("quantity") int quantity) {
+        Optional<Cart> optionalCart = cartRepository.findById(cartId);
+        if (optionalCart.isPresent()) {
+            Cart cart = optionalCart.get();
+            cart.setQuantity(quantity);
+            cartRepository.save(cart);
+            return new ResponseEntity<>( HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
+    
+    
+    
     
 }
