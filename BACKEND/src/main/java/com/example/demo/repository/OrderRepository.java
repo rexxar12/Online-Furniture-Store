@@ -23,7 +23,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 	 
 	 List<Order> findByProduct_Seller_Sid(int sellerId);
 	 
-	 
+	 @Query(value = "SELECT product_id FROM orders GROUP BY product_id ORDER BY COUNT(*) DESC", nativeQuery = true)
+	 List<Integer> findMostFrequentProductId();
 	
 }
 

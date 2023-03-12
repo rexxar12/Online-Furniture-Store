@@ -18,6 +18,8 @@ import CartItems from './Components/Customer/AddCart/Cart';
 import Orders from './Components/Customer/Orders/Orders';
 import NotFound from './Components/Products/NotFound'
 import LowStockProducts from './Components/Seller/LowStock';
+import TrendingProducts from './Components/Admin/Trending';
+import PastOrders from './Components/Customer/PastOrders';
 
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
             <Route path='/customer/orders' element={<Orders/>}/>
             <Route path='/searchfail' element={<NotFound/>}/>
             <Route path='/lowstock' element={<LowStockProducts/>}/>
+            <Route path='/trending' element={<TrendingProducts/>}/>
+            <Route path='/past/orders' element={<PastOrders/>}/>
 
             
             

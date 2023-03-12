@@ -5,6 +5,7 @@ import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBContainer, MDBCard, 
 
 function Orders() {
   const [orders, setOrders] = useState([]);
+  
 
   useEffect(() => {
     const cid = sessionStorage.getItem("id");
@@ -18,12 +19,17 @@ function Orders() {
       });
   }, []);
 
+
+
   return (
     <div>
 
     <Navbar/>
         <MDBContainer>
             <h1 className='heading mt-5 mb-5'>Orders</h1>
+            <div className="mb-2">
+            <span ><a href="/past/orders">Past Orders</a></span>
+            </div>
         <MDBCard>
         <MDBTable>
           <MDBTableHead>
@@ -46,7 +52,7 @@ function Orders() {
                   <div className='ms-3'>
                   <MDBCardImage
                                src={`data:image/png;base64,${order.product.productImage}`} 
-                                fluid className="rounded-3" alt="Cotton T-shirt" style={{width:100, height:100}} />
+                                fluid className="rounded-3" alt="" style={{width:100, height:100}} />
                   </div>
                 </div>
               </td>
@@ -60,12 +66,12 @@ function Orders() {
               <td>
                 <p className='fw-normal mb-1'>{order.quantity}</p>
               </td>
-              <td>{order.orderDate}</td>
+              <td>{new Date(order.orderDate).toLocaleDateString()}</td>
               <td>
-                {order.deliveryDate}
+                {new Date(order.deliveryDate).toLocaleDateString()}
               </td>
               <td>
-                {order.status}
+                {(order.status)===0 ? <p>Order Placed</p>:<p>Order Recieved</p>}
               </td>
             </tr>
             </>
@@ -80,32 +86,3 @@ function Orders() {
     }
 
 export default Orders;
-
-    // <div>
-    //   <h1>Orders</h1>
-    //   <table>
-    //     <thead>
-    //       <tr>
-    //         <th>Order ID</th>
-    //         <th>Product ID</th>
-    //         <th>Quantity</th>
-            
-    //         <span><th>Order Date</th></span>
-    //         <span><th>Delivery Date</th></span>
-    //         <th>Status</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {orders.map((order) => (
-    //         <tr key={order.id}>
-    //           <td><span>{order.id}</span></td>
-    //           <td><span>{order.product.pname}</span></td>
-    //           <td><span>{order.quantity}</span></td>
-    //           <td><span>{order.orderDate}</span></td>
-    //           <td><span>{order.deliveryDate}</span></td>
-    //           <td><span>{order.status}</span></td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </div>

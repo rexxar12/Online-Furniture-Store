@@ -44,13 +44,6 @@ const Seller = () => {
       })
       .catch(error => console.log(error));
   }
-
-
-
-
-
-    
-  
   return (
     <div>
       <Navbar/>

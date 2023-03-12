@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -114,16 +115,26 @@ public class CartController {
         }
     }
     
-    @PostMapping("/placeorder/{customerId}")
-    public ResponseEntity<String> placeOrder(@PathVariable int customerId) {
+    @PostMapping("/placeorder/{customerId}/{paymode}")
+    public ResponseEntity<String> placeOrder(@PathVariable int customerId, @PathVariable String paymode) {
         try {
-            orderService.placeOrder(customerId);
+            orderService.placeOrder(customerId,paymode);
             return new ResponseEntity<>("Order placed successfully.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
+    @DeleteMapping("/{cartId}")
+    public ResponseEntity<String> removeFromCart(@PathVariable("cartId") int cartId) {
+        Optional<Cart> optionalCart = cartRepository.findById(cartId);
+        if (optionalCart.isPresent()) {
+            cartRepository.delete(optionalCart.get());
+            return new ResponseEntity<>("Product removed from cart.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Product not found in cart.", HttpStatus.NOT_FOUND);
+        }
+    }
 
 
     

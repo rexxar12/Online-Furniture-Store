@@ -1,23 +1,23 @@
 import React from 'react'
 import { useState } from 'react';
 
-function Payment() {
+function Payment(props) {
 
 
     const [payment, setPayment] = useState('');
 
   const handleChange = (event) => {
     setPayment(event.target.value);
-    console.log(event.target.value);
+    props.handlePayment(event.target.value);
   }
   return (
     <>
     <div>
                 <select value={payment} onChange={handleChange} className="selectpicker" data-size="4">
 		            <option value="">Select Payment</option>
-								<option value="Mahogany">Credit/Debit Cards</option>
-								<option value="Teak">Cash On Delivery</option>
-								<option value="Rose_Wood">UPI</option>
+								<option value="Card">Credit/Debit Cards</option>
+								<option value="COD">Cash On Delivery</option>
+								<option value="UPI">UPI</option>
 								
 	              </select>
                 </div>

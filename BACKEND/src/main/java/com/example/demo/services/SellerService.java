@@ -21,7 +21,7 @@ public class SellerService {
     @Autowired
     private SellerRepository sellerRepository;
     @Autowired
-    private LoginRepository loginRepository;
+    private LoginRepository loginRepository;	
     @Autowired
     private CityService cityService;
 

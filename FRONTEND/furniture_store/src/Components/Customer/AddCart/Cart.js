@@ -19,10 +19,17 @@ function CartItems() {
   const [cartItems, setCartItems] = useState([]);
   
 
+  let paymode;
+  function handlePayment(payment){
+    paymode=payment;
+    console.log(paymode);
+  }
+
+
 
   const cid = sessionStorage.getItem('id');
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/cart/${cid}`)
+    axios.get(`http://localhost:8080/api/cart/${cid}/`)
       .then(response => {
         setCartItems(response.data);
        
@@ -33,6 +40,26 @@ function CartItems() {
   }, []);
 
   let totalAmount = 0;
+
+  const handleRemove = (item) => {
+    console.log(item);
+    axios.delete(`http://localhost:8080/api/cart/${item}`)
+    .then(response => {
+          console.log(item);
+            console.log(response.data);
+            // Refresh the cart items after removing an item
+            window.location.href='/cart';
+            
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+
+
+
+
 
   const handleAdd = (item) => {
     const updatedCartItems = cartItems.map((cartItem) => {
@@ -93,10 +120,10 @@ setTimeout(() => {
   //place order
   const placeOrder = () => {
     axios
-      .post(`http://localhost:8080/api/cart/placeorder/${cid}`)
+      .post(`http://localhost:8080/api/cart/placeorder/${cid}/${paymode}`)
       .then((response) => {
         console.log(response.data); // log success message
-        window.location.href = "/orders"; // redirect to orders page
+        window.location.href = "/customer/orders"; // redirect to orders page
       })
       .catch((error) => {
         console.log(error.response.data); // log error message
@@ -162,9 +189,9 @@ setTimeout(() => {
                               </MDBTypography>
                             </MDBCol>
                             <MDBCol md="1" lg="1" xl="1" className="text-end">
-                              <a href="#!" className="text-muted">
+                              <button onClick={() => handleRemove(item.cart_id)} className="text-muted btn bg-transparent">
                                 <MDBIcon fas icon="times" />
-                              </a>
+                              </button>
                             </MDBCol>
                           </MDBRow>
                           </>
@@ -198,7 +225,7 @@ setTimeout(() => {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Payment: 
                             </MDBTypography>
-                            <MDBTypography tag="h5"> <Payment/></MDBTypography>
+                            <MDBTypography tag="h5"> <Payment  handlePayment={handlePayment}/></MDBTypography>
                           </div>
         
                           

@@ -24,7 +24,7 @@ public class OrderService {
     @Autowired
     private CartRepository cartRepository;
 
-    public void placeOrder(int customerId) {
+    public void placeOrder(int customerId,String paymode) {
         List<Cart> cartItems = cartRepository.findByCustomerCid(customerId);
         if (cartItems.isEmpty()) {
             throw new RuntimeException("No items in cart to place order.");
@@ -39,6 +39,7 @@ public class OrderService {
             order.setStatus(0);
             order.setOrderDate(new Date());
             order.setDeliveryDate(java.sql.Date.valueOf(deliveryDate));
+            order.setPayment(paymode);
             orderRepository.save(order);
             cartRepository.delete(cartItem);
         }

@@ -69,7 +69,10 @@ function ColorSchemesExample() {
       
       <ul className=" mb-2 nav-menu">
         <li className="nav-item">
-          <a className="nav-link " aria-current="page" href="/customer/home">Home</a>
+          <a className="nav-link " aria-current="page" href="/admin">Home</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link " aria-current="page" href="/trending">Trend Data</a>
         </li>
         <li className="nav-item">
         <a className="nav-link logout" aria-current="page"><Button variant="dark" onClick={handleLogout}>Logout</Button></a>

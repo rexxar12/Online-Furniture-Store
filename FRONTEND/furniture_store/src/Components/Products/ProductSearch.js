@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   MDBContainer,
   MDBRow,
@@ -18,8 +19,17 @@ function ProductSearch() {
   return (
     <MDBContainer fluid className="my-5">
       <MDBRow className="justify-content-center">
-        <MDBCol md="3">
       {products.map((product) => (
+          <Link
+          to={{
+            pathname: `/product-details`,
+            search: `?productName=${product.pname}`,
+            state: {
+              products: product.pname,
+            },
+          }}
+        >
+        <MDBCol md="3">
         <div key={product.id}>
           <MDBCard className="text-black">
           <MDBCardImage src={`data:image/png;base64,${product.productImage}`} position="top" alt={product.pname} />
@@ -29,26 +39,27 @@ function ProductSearch() {
           </div>
 
           <div>
-          <div className="d-flex justify-content-between">
+          <div className="">
           <span>Description: </span>
           <span>{product.description}</span>
           </div>
 
-          <div className="d-flex justify-content-between">
+          <div className="">
           <span>Seller: </span>
           <span>{product.seller.sname}</span>
           </div>
           </div>
           
-          <div className="d-flex justify-content-between total font-weight-bold mt-4">
+          <div className="">
           <span>Category: </span>
           <span>{product.category.category}</span>
           </div>
           </MDBCardBody>
           </MDBCard>
         </div>
-      ))}
         </MDBCol>
+        </Link>
+      ))}
       </MDBRow>
     </MDBContainer>
   )

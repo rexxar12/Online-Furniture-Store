@@ -4,6 +4,9 @@ import './style.css'
 
 function AddToCartButton({itemName,woodType}) {
   const [isProductAdded, setIsProductAdded] = useState(false);
+  
+  
+
 
   const handleAddToCartClick = async () => {
     const cid = sessionStorage.getItem("id");

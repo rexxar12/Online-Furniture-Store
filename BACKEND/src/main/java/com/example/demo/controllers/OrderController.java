@@ -40,6 +40,11 @@ public class OrderController {
 		List<Order> orders = orderRepository.findByCidAndStatus(cid, 0);
 		return ResponseEntity.ok().body(orders);
 	}
+	@GetMapping("/1/{cid}")
+	public ResponseEntity<List<Order>> getOrdersByCustomerId(@PathVariable("cid") int cid) {
+		List<Order> orders = orderRepository.findByCidAndStatus(cid, 1);
+		return ResponseEntity.ok().body(orders);
+	}
 	
 	
 	@GetMapping("/seller/{sellerId}/orders")
@@ -67,6 +72,12 @@ public class OrderController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
+	
+    @GetMapping("/trending")
+    public List<Integer> getMostFrequentProductId() {
+        return orderRepository.findMostFrequentProductId();
+    }
+
 
 	
 	

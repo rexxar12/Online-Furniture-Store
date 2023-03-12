@@ -75,6 +75,9 @@ function ColorSchemesExample() {
           <a className="nav-link " aria-current="page" href="/lowstock">Stock Management</a>
         </li>
         <li className="nav-item">
+          <a className="nav-link " aria-current="page" href="/seller/add-product">Add Product</a>
+        </li>
+        <li className="nav-item">
         <a className="nav-link logout" aria-current="page"><Button variant="dark" onClick={handleLogout}>Logout</Button></a>
         </li>
         

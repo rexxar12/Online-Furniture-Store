@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.dto.ProductDTO;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.Seller;
+import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.services.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,6 +36,8 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @GetMapping("/c/search")
     public List<ProductDTO> searchByCategoryName(@RequestParam String categoryName) {
@@ -73,6 +77,18 @@ public class ProductController {
       return productRepository.findLowStockProductsBySellerId(sellerId);
     }
     
+    @GetMapping("/trendingProducts")
+    public List<Product> getTrendingProducts() {
+        List<Integer> trendingProductIds = orderRepository.findMostFrequentProductId();
+        
+        List<Product> trendingProducts = new ArrayList<>();
+        for (Integer productId : trendingProductIds) {
+            Optional<Product> product = productRepository.findById(productId);
+            product.ifPresent(trendingProducts::add);
+        }
+
+        return trendingProducts;
+    }
     
     
 }
