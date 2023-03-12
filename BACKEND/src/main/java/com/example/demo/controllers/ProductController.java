@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
-import java.io.IOException;
-import java.net.URI;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,40 +66,13 @@ public class ProductController {
     	response.setSeller(products.getSeller());
     	return products;
     }
+    
+
+    @GetMapping("/seller/{sellerId}/products/low-stock")
+    public List<Product> getLowStockProducts(@PathVariable int sellerId) {
+      return productRepository.findLowStockProductsBySellerId(sellerId);
+    }
+    
+    
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//@CrossOrigin(origins = "http://localhost:3000")
-//@RestController
-//@RequestMapping("/api/sellers")
-//public class ProductController {
-//
-//    private final ProductService productService;
-//    
-//    public ProductController(ProductService productService) {
-//        this.productService = productService;
-//    }
-//
-//    @PostMapping("/products")
-//    public Product addProduct(@RequestBody Product product, @RequestParam("sellerId") int sellerId) {
-//        Product newProduct = productService.addProduct(product, sellerId);
-//        return newProduct;
-//    }
-//}

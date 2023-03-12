@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import { Row,Col } from 'react-bootstrap';
-import Btnn from '../../AddCart/AddToCart' 
+import Btnn from '../AddCart/AddToCart' 
 import {motion} from 'framer-motion';
 
 

@@ -1,4 +1,4 @@
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBContainer, MDBCard } from 'mdb-react-ui-kit';
+import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBContainer, MDBCard } from 'mdb-react-ui-kit';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

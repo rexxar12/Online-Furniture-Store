@@ -1,0 +1,85 @@
+package com.example.demo.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="orders")
+public class Order {
+    private int oid;
+    private int productId;
+    private int cid;
+    private int quantity;
+    private int status;
+    private Date orderDate;
+    private Date deliveryDate;
+    
+    public Order(int oid, int productId, int cid, int quantity, int status, Date orderDate, Date deliveryDate) {
+        this.oid = oid;
+        this.productId = productId;
+        this.cid = cid;
+        this.quantity = quantity;
+        this.status = status;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+    }
+    
+    // Getters and Setters for all attributes
+    public int getOid() {
+        return oid;
+    }
+    
+    public void setOid(int oid) {
+        this.oid = oid;
+    }
+    
+    public int getProductId() {
+        return productId;
+    }
+    
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+    
+    public int getCid() {
+        return cid;
+    }
+    
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+    
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    public int getStatus() {
+        return status;
+    }
+    
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    public Date getOrderDate() {
+        return orderDate;
+    }
+    
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+    
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+    
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+}

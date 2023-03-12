@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
 import {  Col, Row,Button, Container } from "react-bootstrap";
 import './style.css';
-import { MDBCardImage} from "mdb-react-ui-kit";
-import Btn from '../AddCart/AddToCart'
+import { MDBCardImage, MDBCardText,MDBIcon} from "mdb-react-ui-kit";
+import Btn from '../Customer/AddCart/AddToCart'
 
 function ProductP() {
   const { state } = useLocation();
@@ -22,8 +22,12 @@ function ProductP() {
             <div className="details" >
               <div className="big-img">
               <MDBCardImage src={`data:image/png;base64,${products.productImage}`} className="image"/>
+              <MDBCardText tag="a" href="/customer/home" className="text-body">
+                                <MDBIcon fas icon="long-arrow-alt-left mt-5" /> Back
+                                to shop
+                              </MDBCardText>
               </div>
-
+              
               <div className="box">
                 <div className="row">
                   <h2>{products.pname}</h2>

@@ -26,6 +26,7 @@ import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.services.CartService;
+import com.example.demo.services.OrderService;
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -38,6 +39,9 @@ public class CartController {
     private CustomerRepository customerRepository;
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderService orderService;
     
     
     
@@ -70,6 +74,7 @@ public class CartController {
     	p.setWood(wood);
     	cart.setProduct(p);
     	cart.setCustomer(c);
+    	cart.setQuantity(1);
     	cartRepository.save(cart);
     	
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -106,6 +111,16 @@ public class CartController {
             return new ResponseEntity<>( HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PostMapping("/placeorder/{customerId}")
+    public ResponseEntity<String> placeOrder(@PathVariable int customerId) {
+        try {
+            orderService.placeOrder(customerId);
+            return new ResponseEntity<>("Order placed successfully.", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

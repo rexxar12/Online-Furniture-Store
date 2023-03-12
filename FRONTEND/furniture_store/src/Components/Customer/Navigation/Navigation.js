@@ -37,19 +37,24 @@ function ColorSchemesExample() {
       let response = await axios.get(`http://localhost:8080/products/c/search?categoryName=${categoryName}`);
       console.log("search block")
       if (response.data.length > 0) {
+        console.log("searching category")
         navigate(`/product-search?categoryName=${categoryName}`, { state: { products: response.data } });
       } else {
         // If no products are found by categoryName, search by productName
         response = await axios.get(`http://localhost:8080/products/p/search?productName=${categoryName}`);
+        console.log("searching products")
         if (response.data) {
+          console.log("searching products")
+          
           navigate(`/product-details?productName=${categoryName}`, { state: { products: response.data } });
         } else {
-          // If no products are found by productName, display an error message
+          navigate('/searchfailed');
           console.log("No products found");
         }
       }
     } catch (error) {
       console.log(error);
+      navigate('/searchfailed');
     }
   }
   return (

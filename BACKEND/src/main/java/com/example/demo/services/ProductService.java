@@ -46,5 +46,10 @@ public class ProductService {
     public List<Product> searchByCategoryName(String categoryName) {
         return productRepository.findByCategory(categoryName);
     }
+    
+    public List<Product> getProductsBySellerId(int sellerId) {
+        return productRepository.findBySid(sellerId);
+    }
+
 }
 

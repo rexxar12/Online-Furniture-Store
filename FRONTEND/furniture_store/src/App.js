@@ -4,7 +4,7 @@ import RegisterSeller from './Components/Registration/Seller';
 import Admin from './Components/Admin/Admin';
 import Seller from './Components/Seller/Seller';
 import Carpenter from './Components/Carpenter';
-import Customer from './Components/Customer/Customer';
+import Customer from './Components/Customer/Home/Customer';
 import Products from './Components/Products/Products';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Reg from './Components/Reg/Reg'
@@ -14,7 +14,10 @@ import {requireAuth} from './utils/Auth'
 import './index.css'
 import ProductSearch from './Components/Products/ProductSearch';
 import ProductP from './Components/Products/ProductP';
-import CartItems from './Components/AddCart/Cart';
+import CartItems from './Components/Customer/AddCart/Cart';
+import Orders from './Components/Customer/Orders/Orders';
+import NotFound from './Components/Products/NotFound'
+import LowStockProducts from './Components/Seller/LowStock';
 
 
 function App() {
@@ -40,6 +43,10 @@ function App() {
             <Route path='/product-search' element={<ProductSearch/>}/>
             <Route path='/product-details/' element={<ProductP/>}/>
             <Route path='/cart' element={<CartItems/>}/>
+            <Route path='/customer/orders' element={<Orders/>}/>
+            <Route path='/searchfail' element={<NotFound/>}/>
+            <Route path='/lowstock' element={<LowStockProducts/>}/>
+
             
             
             
