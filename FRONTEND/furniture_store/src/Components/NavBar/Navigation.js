@@ -5,7 +5,7 @@ import cat from './cat.json'
 import React, { useEffect, useRef,useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import Logo from './logo.png';
 function ColorSchemesExample() {
   const animationRef = useRef(null);
   const [animationDirection, setAnimationDirection] = useState(1);
@@ -67,7 +67,7 @@ function ColorSchemesExample() {
     
     
 
-  <h1 className="logo">OFS</h1>
+  <img src={Logo}/>
   <div className="container">
     
     <div className="row">
