@@ -5,11 +5,12 @@ import axios from 'axios';
 import './Register.css';
 import { Row,Col } from 'react-bootstrap';
 import { useState,useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const API_URL = 'http://localhost:8080/api/customers/register';
 
 const Registration = () => {
+  const navigate=useNavigate();
   const initialValues = {
     fname:'',
     lname:'',
@@ -42,6 +43,7 @@ const Registration = () => {
       await axios.post(API_URL, values);
       alert('Customer registered successfully');
       resetForm();
+      navigate("/home");
     } catch (error) {
       alert(error.response.data);
       console.log(values);

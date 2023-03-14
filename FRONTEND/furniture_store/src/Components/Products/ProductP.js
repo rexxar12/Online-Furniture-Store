@@ -5,6 +5,7 @@ import './style.css';
 import { MDBCardImage, MDBCardText,MDBIcon} from "mdb-react-ui-kit";
 import Btn from '../Customer/AddCart/AddToCart'
 
+
 function ProductP() {
   const { state } = useLocation();
   const products = state.products || [];
@@ -18,6 +19,7 @@ function ProductP() {
   console.log(products);
   return (
     <div className="app">
+      
         
             <div className="details" >
               <div className="big-img">
@@ -51,8 +53,13 @@ function ProductP() {
                 </div>
 
 
-                
-                <button className="cart"><Btn  itemName={products.pname} className='addtocart' woodType={woodType}/></button>
+                {woodType === '' && <p className="text-danger">Please select a wood type.</p>}
+
+                  {woodType !== '' ? (
+                    <button className="cart">
+                      <Btn itemName={products.pname} className="addtocart" woodType={woodType} />
+                    </button>
+                  ) : null}
                 <p>Dimensions: {products.productDetails.length}L X {products.productDetails.width}W X {products.productDetails.height}H</p>
                 <p>Brand Name: {products.seller.sname}</p>
                 {products.category.category === "Chair" ? <p>Care: Wipe clean with a damp cloth.</p> : null}

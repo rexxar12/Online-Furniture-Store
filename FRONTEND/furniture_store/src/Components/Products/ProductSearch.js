@@ -37,13 +37,15 @@ function ProductSearch() {
   return (
     <MDBContainer fluid className="my-5">
       <MDBRow className="justify-content-center">
+        <MDBCol xs={8} >
+        </MDBCol>
       {products.map((product) => (
-        <MDBCol md="3">
+        <MDBCol xs={8} md={3}>
           <button className="btn bg-transparent" onClick={() => handleSearch(product.pname)}>
         <div key={product.id}>
           <MDBCard className="text-black">
           <MDBCardImage src={`data:image/png;base64,${product.productImage}`} position="top" alt={product.pname} 
-          />
+          className='card-image'/>
           <MDBCardBody >
           <div className="text-center">
           <MDBCardTitle>{product.pname}</MDBCardTitle>

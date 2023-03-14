@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {
   MDBContainer,
   MDBRow,
@@ -14,7 +15,7 @@ import './style.css'
 
 function ProductSearch({category}) {
   const [products, setProducts] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const searchProducts = async () => {
       try {
@@ -33,14 +34,25 @@ function ProductSearch({category}) {
     searchProducts();
   }, []);
   
+  const handleSearch = async (productName) => {
+    try {
+      let response = await axios.get(`http://localhost:8080/products/p/search?productName=${productName}`);
+      if (response.data) {
+        navigate(`/product-details?productName=${productName}`, { state: { products: response.data } });
+      } 
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     
-    <MDBContainer fluid className="my-5">
+    <MDBContainer fluid className="">
       
       <MDBRow className="justify-content-center">
       {products.map((product) => (
-        <MDBCol md="6">
+        <MDBCol md="4">
+          <button className="btn bg-transparent" onClick={() => handleSearch(product.pname)}>
           <MDBCard className="text-black">
             <MDBCardImage
               src={`data:image/jpg;base64,${product.productImage}`}
@@ -65,6 +77,7 @@ function ProductSearch({category}) {
               </div>
             </MDBCardBody>
           </MDBCard>
+          </button>
         </MDBCol>
           ))}
       </MDBRow>

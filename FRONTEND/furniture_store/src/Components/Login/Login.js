@@ -150,7 +150,7 @@ const handleSubmit = async (event) => {
 
       <div className="text-center pt-1 mb-5 pb-1">
               <button className="mb-4 w-100 btn btn-primary btn-rounded">Sign in</button>
-              <a className="text-muted" href="#!">Forgot password?</a>
+              
             </div>
 
             <div className="d-flex align-items-center justify-content-center mb-4">

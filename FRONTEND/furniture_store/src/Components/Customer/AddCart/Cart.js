@@ -17,6 +17,8 @@ import Payment from "../Payment";
 
 function CartItems() {
   const [cartItems, setCartItems] = useState([]);
+  let subTotal = 0;
+  let Total = 0;
   
 
   let paymode;
@@ -40,6 +42,7 @@ function CartItems() {
   }, []);
 
   let totalAmount = 0;
+  let itemTotal = 0;
 
   const handleRemove = (item) => {
     console.log(item);
@@ -67,6 +70,7 @@ function CartItems() {
         return {
           ...cartItem,
           quantity: cartItem.quantity + 1
+          
         }
       } else {
         return cartItem;
@@ -93,9 +97,10 @@ setTimeout(() => {
   const handleSubtract = (item) => {
     const updatedCartItems = cartItems.map((cartItem) => {
       if (cartItem.productName === item.productName) {
+        const newQuantity = cartItem.quantity - 1 > 0 ? cartItem.quantity - 1 : 1;
         return {
           ...cartItem,
-          quantity: cartItem.quantity - 1
+          quantity: newQuantity
         }
       } else {
         return cartItem;
@@ -114,7 +119,7 @@ setTimeout(() => {
         .catch(error => {
           console.error(error);
         });
-    }, 5000);
+    }, 50);
   };
 
   //place order
@@ -153,16 +158,20 @@ setTimeout(() => {
 
                           {cartItems.length===0 ?<p>Hmm....The cart seems to be empty. Try adding items to cart.</p> : <>
                           {cartItems.map((item) => {
-                            totalAmount += item.total;
                             return(
-                            <>
+                              
+                              subTotal=0,
+                              subTotal += item.quantity * item.price,
+                              Total+=subTotal,
+                              <>
                           <hr className="my-4" />
+                              
         
                           <MDBRow className="mb-4 d-flex justify-content-between align-items-center">
                             <MDBCol md="2" lg="2" xl="2">
                               <MDBCardImage
                                src={`data:image/png;base64,${item.productImage}`} 
-                                fluid className="rounded-3" alt="Cotton T-shirt" />
+                                fluid className="rounded-3" />
                             </MDBCol>
                             <MDBCol md="3" lg="3" xl="3">
                               <MDBTypography tag="h6" className="text-muted">
@@ -185,7 +194,7 @@ setTimeout(() => {
                             </MDBCol>
                             <MDBCol md="3" lg="2" xl="2" className="text-end">
                               <MDBTypography tag="h6" className="mb-0">
-                                Rs. {item.total}    
+                                Rs. {subTotal}    
                               </MDBTypography>
                             </MDBCol>
                             <MDBCol md="1" lg="1" xl="1" className="text-end">
@@ -194,10 +203,14 @@ setTimeout(() => {
                               </button>
                             </MDBCol>
                           </MDBRow>
+                       
+                          
                           </>
+                          
+                        
                             );
                         })}
-                      </>}
+                      </> }
                             
 
 
@@ -239,7 +252,7 @@ setTimeout(() => {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total price
                             </MDBTypography>
-                            <MDBTypography tag="h5">Rs. {totalAmount}</MDBTypography>
+                            <MDBTypography tag="h5">Rs. {Total}</MDBTypography>
                           </div>
         
                           <button className="btn btn-dark" block size="lg" onClick={placeOrder}>
@@ -257,37 +270,3 @@ setTimeout(() => {
         );
 }    
 export default CartItems;
-
-    // <div>
-    //   <h1>Cart Items</h1>
-    //   <table>
-    //     <thead>
-    //       <tr>
-    //         <th>Product id</th>
-    //         <th>Product Name</th>
-    //         <th>Price</th>
-    //         <th>Quantity</th>
-    //         <th>Total</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-
-
-    //       {cartItems.map(item => (
-    //         <tr key={item.productName}>
-    //           <td>{item.cart_id}</td>
-    //           <td>{item.productName}</td>
-    //           <td>{item.price}</td>
-    //           <td className='text-center'>
-    //             <button onClick={() => handleSubtract(item)}>-</button>
-    //             {item.quantity}
-    //             <button onClick={() => handleAdd(item)}>+</button>
-    //           </td>
-    //           <td>{item.total}</td>
-    //         </tr>
-    //       ))}
-
-
-    //     </tbody>
-    //   </table>
-    // </div>

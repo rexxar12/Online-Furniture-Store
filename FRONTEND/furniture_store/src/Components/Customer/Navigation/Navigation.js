@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { logout } from '../../reduxStore/actions';
+import Logo from '../../Customer/Navigation/logo.png';
+
 
 
 function ColorSchemesExample() {
@@ -64,7 +66,7 @@ function ColorSchemesExample() {
     
     
 
-  <h1 className="logo">OFS</h1>
+  <img src={Logo}/>
   <div className="container">
     
     <div className="row">

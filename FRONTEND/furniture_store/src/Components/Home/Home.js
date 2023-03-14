@@ -49,20 +49,6 @@ function Homepage() {
 
 
 
-    <div className="trending_products">
-      <section>
-      <Container>
-        <Row>
-          <Col lg="12" className="text-center">
-          <h2>Trending Prodcuts</h2>
-          <Row className='mt-5'>
-              <ProductList data={data}/>
-          </Row>
-          </Col>
-        </Row>
-      </Container>
-      </section>
-    </div>
     </div>
     </>
   );
@@ -71,3 +57,18 @@ function Homepage() {
 export default Homepage;
 
 
+
+    // <div className="trending_products">
+    //   <section>
+    //   <Container>
+    //     <Row>
+    //       <Col lg="12" className="text-center">
+    //       <h2>Trending Prodcuts</h2>
+    //       <Row className='mt-5'>
+    //           <ProductList data={data}/>
+    //       </Row>
+    //       </Col>
+    //     </Row>
+    //   </Container>
+    //   </section>
+    // </div>
