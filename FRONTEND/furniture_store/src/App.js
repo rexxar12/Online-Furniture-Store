@@ -20,6 +20,8 @@ import NotFound from './Components/Products/NotFound'
 import LowStockProducts from './Components/Seller/LowStock';
 import TrendingProducts from './Components/Admin/Trending';
 import PastOrders from './Components/Customer/PastOrders';
+import CustomerInfo from './Components/Seller/CustomerInfo'
+import Catalog from './Components/Customer/ProductList/Catalog/Catalog'
 
 
 function App() {
@@ -50,7 +52,8 @@ function App() {
             <Route path='/lowstock' element={<LowStockProducts/>}/>
             <Route path='/trending' element={<TrendingProducts/>}/>
             <Route path='/past/orders' element={<PastOrders/>}/>
-
+            <Route path="/seller/customer-details/" element={<CustomerInfo/>} />
+            <Route path="/catalog" element={<Catalog/>} />
             
             
             

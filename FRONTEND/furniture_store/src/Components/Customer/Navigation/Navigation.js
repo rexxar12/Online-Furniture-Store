@@ -96,6 +96,9 @@ function ColorSchemesExample() {
           <a className="nav-link " aria-current="page" href="/customer/orders">Orders</a>
         </li>
         <li className="nav-item">
+          <a className="nav-link " aria-current="page" href="/catalog">Catalog</a>
+        </li>
+        <li className="nav-item">
         <a className="nav-link logout" aria-current="page" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </li>
         <li className="nav-item">

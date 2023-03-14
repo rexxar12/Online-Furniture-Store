@@ -20,4 +20,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	 
 	 @Query("SELECT c from Customer c where c.cid= :cid")
 	 Customer findByCid(int cid);
+	 
+	 @Query("SELECT c from Customer c where c.email= :email")
+	 Customer findByEmailid(String email);
 }

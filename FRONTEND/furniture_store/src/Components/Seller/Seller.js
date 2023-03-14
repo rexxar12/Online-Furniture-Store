@@ -47,6 +47,9 @@ const Seller = () => {
   return (
     <div>
       <Navbar/>
+
+       
+    
       <MDBContainer className='mt-5 mb-5'>
         <h1 className='heading mt-5 mb-5'>Seller Dashboard</h1>
     <MDBCard>
@@ -56,7 +59,7 @@ const Seller = () => {
           <th scope='col'><p>Image</p></th>
           <th scope='col'><p>Product Name</p></th>
           <th scope='col'><p>Quantity</p></th>
-          
+          <th scope='col'><p>Customer Details</p></th>
           <th scope='col'><p>Status</p></th>
           <th scope='col'><p className='actions'>Actions</p></th>
         </tr>
@@ -68,20 +71,22 @@ const Seller = () => {
         <tr>
           <td>
           <MDBCardImage 
-          src={`data:image/png;base64,${order.product.productImage}`} 
+          src={`data:image/jpg;base64,${order.product.productImage}`} 
           fluid className="rounded-3" alt="Cotton T-shirt" style={{width:100, height:100}} />
           </td>
           <td>
             <div className='d-flex align-items-center'>
             
               <div className='ms-3'>
-                <p className='fw-bold mb-1'>{order.oid}</p>
                 <p className='text-muted mb-0'>{order.product.pname}</p>
               </div>
             </div>
           </td>
           <td>
             <p className='fw-normal mb-1'>{order.quantity}</p>
+          </td>
+          <td>
+            <a className='fw-normal mb-1' href={`/seller/customer-details?email=${order.customer.email}`}>{order.customer.fname} {order.customer.lname}</a>
           </td>
           
           <td>
@@ -106,9 +111,6 @@ const Seller = () => {
     </MDBTable>
     </MDBCard>
     </MDBContainer>
-
-       
-    
     </div>
   );
 }

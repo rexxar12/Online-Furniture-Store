@@ -155,11 +155,11 @@ const handleSubmit = async (event) => {
 
             <div className="d-flex align-items-center justify-content-center mb-4">
               <p className='text-dark my-2'>Dont Have an Account?</p>
-              <a href='/reg'>
               <button outline className='mx-2 btn btn-outline-danger Button'>
+              <a href='/reg' className="create">
                 Create New
-              </button>
               </a>
+              </button>
             </div>
             </form>
 

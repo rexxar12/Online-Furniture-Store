@@ -42,7 +42,8 @@ function ProductSearch() {
           <button className="btn bg-transparent" onClick={() => handleSearch(product.pname)}>
         <div key={product.id}>
           <MDBCard className="text-black">
-          <MDBCardImage src={`data:image/png;base64,${product.productImage}`} position="top" alt={product.pname} />
+          <MDBCardImage src={`data:image/png;base64,${product.productImage}`} position="top" alt={product.pname} 
+          />
           <MDBCardBody >
           <div className="text-center">
           <MDBCardTitle>{product.pname}</MDBCardTitle>

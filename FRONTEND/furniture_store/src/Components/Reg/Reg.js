@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Seller from '../Registration/Seller';
 import Customer from '../Registration/Customer';
-import Carpenter from '../Registration/Carpenter';
+
 import './Register.css'
 
 const Register = () => {
@@ -28,12 +28,12 @@ const Register = () => {
                       <option value="">-- Select Type --</option>
                       <option value="seller">Seller</option>
                       <option value="customer">Customer</option>
-                      <option value="carpenter">Carpenter</option>
+                      
                     </select>
                   </div>
                   {formType === "seller" && <Seller />}
                   {formType === "customer" && <Customer />}
-                  {formType === "carpenter" && <Carpenter />}
+                  
                 </div>
               </div>
             </div>

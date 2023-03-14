@@ -48,6 +48,13 @@ public class ProductController {
             response.setProductImage(product.getProductImage());
             response.setPname(product.getPname());
             response.setDescription(product.getDescription());
+            response.setPrice(product.getProductDetails().getPrice());
+            if(product.getProductDetails().getStock()>0) {
+            	response.setStock("In Stock");
+            }else
+            {
+            	response.setStock("Out of Stock");
+            }
             response.setSeller(product.getSeller());
             response.setCategory(product.getCategory());
             responses.add(response);

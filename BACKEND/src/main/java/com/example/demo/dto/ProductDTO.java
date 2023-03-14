@@ -13,7 +13,7 @@ public class ProductDTO {
     private Seller seller;
     private Category category;
     private long price;
-    private int stock;
+    private String stock;
     private int rating;
     
     
@@ -31,10 +31,11 @@ public class ProductDTO {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	public int getStock() {
+	
+	public String getStock() {
 		return stock;
 	}
-	public void setStock(int stock) {
+	public void setStock(String stock) {
 		this.stock = stock;
 	}
 	public int getRating() {
