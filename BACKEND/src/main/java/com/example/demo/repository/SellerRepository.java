@@ -26,8 +26,4 @@ public interface SellerRepository extends JpaRepository<Seller, Integer>{
 	    @Query("SELECT s.status FROM Seller s WHERE s.email = :email")
 	    Integer findStatusByEmail(String email);
 	    
-	    
-	    
-	    
-	    
 }

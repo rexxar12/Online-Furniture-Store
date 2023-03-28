@@ -38,7 +38,11 @@ public class ProductController {
     private ProductRepository productRepository;
     @Autowired
     private OrderRepository orderRepository;
-
+    
+    
+    
+    
+ 
     @GetMapping("/c/search")
     public List<ProductDTO> searchByCategoryName(@RequestParam String categoryName) {
         List<Product> products = productService.searchByCategoryName(categoryName);

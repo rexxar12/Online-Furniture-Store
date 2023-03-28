@@ -37,7 +37,7 @@ function ProductP() {
                 </div>
                 
 
-                <p>{products.description} IFEJKDFHJDKFH JAF HAJKDF HADJKF HDAJKFH EDKJF HDAJKF HDAKJF HEAJF HDAKJF HJDAKFH DAKJF HJDAKF HAKDJF HAKJFH AKJDF H</p>
+                <p>{products.description} </p>
                 <p></p>
                 
                 <div>

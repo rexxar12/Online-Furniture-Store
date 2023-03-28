@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dto.SellerDTO;
 import com.example.demo.entities.City;
 import com.example.demo.entities.Login;
+import com.example.demo.entities.PassBasedEnc;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.entities.Seller;
 import com.example.demo.exceptions.EmailAlreadyExistsException;
 import com.example.demo.repository.LoginRepository;
@@ -24,6 +26,8 @@ public class SellerService {
     private LoginRepository loginRepository;	
     @Autowired
     private CityService cityService;
+    @Autowired
+    private SaltValue saltValue;
 
     public void registerSeller(SellerDTO seller) throws EmailAlreadyExistsException {
         // Check if the email is already in use
@@ -41,13 +45,18 @@ public class SellerService {
         
         
         //encoder
-        s.setPassword(seller.getPassword());
+        String salt = saltValue.getSalt();
+        String encryptedPassword = PassBasedEnc.generateSecurePassword(seller.getPassword(), salt);
+        s.setPassword(encryptedPassword);
+        
+        
+        
         s.setSname(seller.getSname());
         s.setStatus(0);
         s.setRole(2);
         Login cred=new Login();
         cred.setEmail(seller.getEmail());
-        cred.setPassword(seller.getPassword());
+        cred.setPassword(encryptedPassword);
         cred.setRole(2);
         // Save the new Seller to the database
         sellerRepository.save(s);

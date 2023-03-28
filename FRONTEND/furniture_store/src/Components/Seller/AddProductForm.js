@@ -26,7 +26,16 @@ function AddProductForm() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setProduct({ ...product, image: file });
+    const fileSize = file.size;
+    if (file && file.type === 'image/jpeg') {
+      setProduct({ ...product, image: file });
+    }else if (fileSize > 500000) { // set the maximum file size to be 5KB (500000 bytes)
+      alert("File too Large. file size should be 500kb or less.")
+      file=null;
+    } 
+    else {
+     alert("Please provide jpg file only")
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -93,7 +102,7 @@ function AddProductForm() {
                   <Row>
                     <Col>
                     <div className='form-outline'>
-                      <label htmlFor='length'>Length: </label>
+                      <label htmlFor='length'>Length(in cm): </label>
                       <input type="number" id="length" name="length"  onChange={handleInputChange} required className="form-control form-control-lg" />
                     </div>
                     </Col>
@@ -101,7 +110,7 @@ function AddProductForm() {
                   <Row>
                     <Col>
                     <div className='form-outline'>
-                      <label htmlFor='width'>Width: </label>
+                      <label htmlFor='width'>Width(in cm): </label>
                       <input type="number" id="width" name="width"  onChange={handleInputChange} required className="form-control form-control-lg" />
                     </div>
                     </Col>
@@ -109,7 +118,7 @@ function AddProductForm() {
                   <Row>
                     <Col>
                     <div className='form-outline'>
-                      <label htmlFor='height'>Height: </label>
+                      <label htmlFor='height'>Height(in cm): </label>
                       <input type="number" id="height" name="height"  onChange={handleInputChange} required className="form-control form-control-lg" />
                     </div>
                     </Col>

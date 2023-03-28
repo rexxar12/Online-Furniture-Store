@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.LoginResponse;
+import com.example.demo.entities.PassBasedEnc;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.SellerRepository;
 import com.example.demo.services.LoginService;
@@ -29,6 +31,8 @@ public class LoginController {
     private SellerRepository sellerRepository;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private SaltValue saltValue;
     
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody Map<String, String> loginDetails) {
@@ -36,9 +40,11 @@ public class LoginController {
         String password = loginDetails.get("password");
         int id;
         int status;
-
-        if (userService.authenticate(email, password)) {
-            int userRole = userService.getUserRole(email, password);
+        String salt = saltValue.getSalt();
+        String encryptedPassword = PassBasedEnc.generateSecurePassword(password, salt);
+        
+        if (userService.authenticate(email, encryptedPassword)) {
+            int userRole = userService.getUserRole(email, encryptedPassword);
             if (userRole == 1) {
                 return ResponseEntity.ok(new LoginResponse(0, "admin",1));
             } else if (userRole == 2) {

@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 const API_URL = 'http://localhost:8080/api/sellers/register';
+
+
 const Registration = () => {
   const navigate =useNavigate();
   const initialValues = {
@@ -19,8 +21,12 @@ const Registration = () => {
     gstno: '',
     city_id:'',
   };
+
   const [cities, setCities] = useState([]);
-  console.log(cities)
+
+
+
+  
     useEffect(() => {
         axios.get('http://localhost:8080/cities')
             .then(response => setCities(response.data))

@@ -28,7 +28,7 @@ function Catalog() {
               value={formType}
               onChange={handleSelect}
             >
-              <option value="">-- Category --</option>
+              <option value="a">-- Category --</option>
               <option value="Sofa">Sofa</option>
               <option value="Chair">Chair</option>
               <option value="Bed">Bed</option>
@@ -36,7 +36,7 @@ function Catalog() {
               <option value="Table">Table</option>
               <option value="Coffee Table">Coffee Table</option>
               <option value="Dining Table">Dining Table</option>
-              <option value="Outdoor">Outdoor</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </Col>
@@ -48,7 +48,7 @@ function Catalog() {
         {formType === "Table" && <Products category={formType}/>}
         {formType === "Coffee Table" && <Products category={formType}/>}
         {formType === "Dining Table" && <Products category={formType}/>}
-        {formType === "Outdoor" && <Products category={formType}/>}
+        {formType === "Other" && <Products category={formType}/>}
           
         </Col>
       </Row>

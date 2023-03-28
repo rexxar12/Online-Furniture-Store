@@ -20,7 +20,7 @@ function PastOrders() {
 
     <Navbar/>
         <MDBContainer>
-            <h1 className='heading mt-5 mb-5'>Orders</h1>
+            <h1 className='heading mt-5 mb-5'>Past Orders</h1>
         <MDBCard>
         <MDBTable>
           <MDBTableHead>

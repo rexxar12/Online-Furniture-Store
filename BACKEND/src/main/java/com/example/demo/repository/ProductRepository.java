@@ -22,13 +22,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT p FROM Product p JOIN Category c ON p.category = c.category_id WHERE c.category = :category")
     List<Product> findByCategory(@Param("category") String category);
 	
-    @Query("Select p from Product p where p.pname = :name ")
+    @Query("Select p from Product p where p.pname LIKE :name ")
     Product findByName(String name);
     
     @Query("Select p from Product p where sid= :sid")
     List<Product> findBySid(int sid);
     
-    @Query("SELECT p FROM Product p WHERE p.seller.sid = :sellerId AND p.productDetails.stock < 100")
+    @Query("SELECT p FROM Product p WHERE p.seller.sid = :sellerId AND p.productDetails.stock < 50")
     List<Product> findLowStockProductsBySellerId(int sellerId);
     
     

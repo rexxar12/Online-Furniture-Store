@@ -85,7 +85,8 @@ const handleSubmit = async (event) => {
     const { id, role,status } = response.data;
     sessionStorage.setItem("id", id);
 
-    if(status===0){alert("We are working on setting up your account. Please wait a few hours or contact us.")}else{
+    if(status===0){alert("We are working on setting up your account. Please wait a few hours or contact us.")}
+    else{
     dispatch({ type: "STORE_ID", payload: id});
     dispatch({ type: "LOGIN_SUCCESS", payload: role });
     if (role === "admin") {

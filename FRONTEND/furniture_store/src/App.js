@@ -22,7 +22,7 @@ import TrendingProducts from './Components/Admin/Trending';
 import PastOrders from './Components/Customer/PastOrders';
 import CustomerInfo from './Components/Seller/CustomerInfo'
 import Catalog from './Components/Customer/ProductList/Catalog/Catalog'
-
+import Inventory from './Components/Seller/Inventory';
 
 function App() {
 
@@ -54,6 +54,7 @@ function App() {
             <Route path='/past/orders' element={<PastOrders/>}/>
             <Route path="/seller/customer-details/" element={<CustomerInfo/>} />
             <Route path="/catalog" element={<Catalog/>} />
+            <Route path="/inventory" element={<Inventory/>} />
             
             
             

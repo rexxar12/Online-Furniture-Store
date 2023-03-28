@@ -72,8 +72,9 @@ function ColorSchemesExample() {
           <a className="nav-link " aria-current="page" href="/seller">Dashboard</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link " aria-current="page" href="/lowstock">Stock Management</a>
+          <a className="nav-link " aria-current="page" href="/lowstock">Low Stock</a>
         </li>
+      
         <li className="nav-item">
           <a className="nav-link " aria-current="page" href="/seller/add-product">Add Product</a>
         </li>
